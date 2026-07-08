@@ -86,6 +86,7 @@
         .animate-on-scroll:nth-child(2) { animation-delay: 0.15s; }
         .animate-on-scroll:nth-child(3) { animation-delay: 0.25s; }
         .animate-on-scroll:nth-child(4) { animation-delay: 0.35s; }
+        .animate-on-scroll:nth-child(5) { animation-delay: 0.45s; }
 
         /* ===== HEADER ===== */
         header {
@@ -396,7 +397,7 @@
             animation: pulseGlow 2s ease-in-out infinite;
         }
 
-        /* ===== GALLERY ===== */
+        /* ===== GALLERY (БЕЗ ПОДПИСЕЙ) ===== */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 22vw, 200px), 1fr));
@@ -405,11 +406,10 @@
         .gallery-item {
             background: var(--card);
             border-radius: var(--radius);
-            padding: 10px 10px 14px;
+            padding: 10px;
             box-shadow: var(--shadow);
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
             border: 1px solid var(--border);
-            text-align: center;
             overflow: hidden;
             opacity: 0;
             animation: scaleIn 0.7s ease forwards;
@@ -441,16 +441,6 @@
         .gallery-item:hover img,
         .gallery-item:hover video {
             transform: scale(1.06);
-        }
-        .gallery-item .caption {
-            margin-top: 8px;
-            font-size: clamp(0.8rem, 1vw, 0.9rem);
-            color: #6b4f3b;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .gallery-item:hover .caption {
-            color: #a7613e;
         }
 
         /* ===== STEPS ===== */
@@ -587,215 +577,71 @@
 
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-            .nav {
-                padding: 10px 0;
-            }
-            .nav a {
-                margin: 0 6px;
-                font-size: 0.82rem;
-            }
-            .section {
-                padding: 32px 0 28px;
-            }
-            h2 {
-                font-size: 1.5rem;
-                padding-left: 12px;
-                border-left-width: 4px;
-            }
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-                gap: 16px;
-            }
-            .card {
-                padding: 18px 12px 20px;
-            }
-            .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 14px;
-            }
-            .gallery-item img,
-            .gallery-item video {
-                height: 140px;
-            }
-            .step {
-                min-width: 140px;
-                padding: 18px 14px;
-            }
-            .contact-block {
-                padding: 20px 16px;
-            }
-            .contact-block p {
-                font-size: 0.95rem;
-                gap: 6px;
-            }
-            .socials a svg {
-                width: 32px;
-                height: 32px;
-            }
-            .tab-btn {
-                padding: 8px 18px;
-                font-size: 0.85rem;
-            }
+            .container { padding: 0 16px; }
+            .nav { padding: 10px 0; }
+            .nav a { margin: 0 6px; font-size: 0.82rem; }
+            .section { padding: 32px 0 28px; }
+            h2 { font-size: 1.5rem; padding-left: 12px; border-left-width: 4px; }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+            .card { padding: 18px 12px 20px; }
+            .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+            .gallery-item { padding: 8px; }
+            .gallery-item img, .gallery-item video { height: 140px; }
+            .step { min-width: 140px; padding: 18px 14px; }
+            .contact-block { padding: 20px 16px; }
+            .contact-block p { font-size: 0.95rem; gap: 6px; }
+            .socials a svg { width: 32px; height: 32px; }
+            .tab-btn { padding: 8px 18px; font-size: 0.85rem; }
         }
 
         @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-            header p {
-                font-size: 0.85rem;
-                padding: 4px 16px;
-            }
-            .nav a {
-                margin: 0 4px;
-                font-size: 0.7rem;
-                padding: 4px 0;
-            }
-            .nav {
-                padding: 8px 0;
-            }
-            .grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .card {
-                border-radius: 18px;
-                padding: 14px 10px 16px;
-            }
-            .card .emoji-big {
-                font-size: 2.8rem;
-            }
-            .card h3 {
-                font-size: 0.95rem;
-            }
-            .card p {
-                font-size: 0.75rem;
-            }
-            .price {
-                font-size: 0.85rem;
-                padding: 2px 12px;
-            }
-            .gallery {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .gallery-item {
-                padding: 8px 8px 12px;
-                border-radius: 18px;
-            }
-            .gallery-item img,
-            .gallery-item video {
-                height: 120px;
-                border-radius: 10px;
-            }
-            .gallery-item .caption {
-                font-size: 0.7rem;
-                margin-top: 4px;
-            }
-            .btn {
-                padding: 12px 24px;
-                font-size: 0.9rem;
-            }
-            .steps {
-                gap: 12px;
-            }
-            .step {
-                min-width: 100px;
-                padding: 14px 10px;
-                border-radius: 24px;
-            }
-            .step .num {
-                font-size: 1.8rem;
-            }
-            .step h3 {
-                font-size: 0.85rem;
-            }
-            .step p {
-                font-size: 0.75rem;
-            }
-            .contact-block {
-                padding: 16px 12px;
-                border-radius: 28px;
-            }
-            .contact-block p {
-                font-size: 0.85rem;
-                margin: 6px 0;
-            }
-            .contact-block .icon {
-                width: 28px;
-                font-size: 1.2rem;
-            }
-            .socials a svg {
-                width: 28px;
-                height: 28px;
-            }
-            footer {
-                font-size: 0.7rem;
-                padding: 16px 0;
-            }
-            h2 {
-                font-size: 1.2rem;
-                padding-left: 10px;
-                margin-bottom: 16px;
-            }
-            .section {
-                padding: 24px 0 20px;
-            }
-            .tabs {
-                gap: 6px;
-            }
-            .tab-btn {
-                padding: 6px 14px;
-                font-size: 0.75rem;
-            }
-            .tab-btn .tab-icon {
-                margin-right: 4px;
-            }
+            header h1 { font-size: 1.8rem; }
+            header p { font-size: 0.85rem; padding: 4px 16px; }
+            .nav a { margin: 0 4px; font-size: 0.7rem; padding: 4px 0; }
+            .nav { padding: 8px 0; }
+            .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .card { border-radius: 18px; padding: 14px 10px 16px; }
+            .card .emoji-big { font-size: 2.8rem; }
+            .card h3 { font-size: 0.95rem; }
+            .card p { font-size: 0.75rem; }
+            .price { font-size: 0.85rem; padding: 2px 12px; }
+            .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .gallery-item { padding: 6px; border-radius: 18px; }
+            .gallery-item img, .gallery-item video { height: 120px; border-radius: 10px; }
+            .btn { padding: 12px 24px; font-size: 0.9rem; }
+            .steps { gap: 12px; }
+            .step { min-width: 100px; padding: 14px 10px; border-radius: 24px; }
+            .step .num { font-size: 1.8rem; }
+            .step h3 { font-size: 0.85rem; }
+            .step p { font-size: 0.75rem; }
+            .contact-block { padding: 16px 12px; border-radius: 28px; }
+            .contact-block p { font-size: 0.85rem; margin: 6px 0; }
+            .contact-block .icon { width: 28px; font-size: 1.2rem; }
+            .socials a svg { width: 28px; height: 28px; }
+            footer { font-size: 0.7rem; padding: 16px 0; }
+            h2 { font-size: 1.2rem; padding-left: 10px; margin-bottom: 16px; }
+            .section { padding: 24px 0 20px; }
+            .tabs { gap: 6px; }
+            .tab-btn { padding: 6px 14px; font-size: 0.75rem; }
+            .tab-btn .tab-icon { margin-right: 4px; }
         }
 
         @media (max-width: 360px) {
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .gallery {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .nav a {
-                margin: 0 4px;
-                font-size: 0.65rem;
-            }
-            .tab-btn {
-                padding: 4px 12px;
-                font-size: 0.7rem;
-            }
+            .grid { grid-template-columns: 1fr; gap: 12px; }
+            .gallery { grid-template-columns: 1fr; gap: 12px; }
+            .nav a { margin: 0 4px; font-size: 0.65rem; }
+            .tab-btn { padding: 4px 12px; font-size: 0.7rem; }
         }
 
         @media (min-width: 1200px) {
-            .container {
-                max-width: 1200px;
-                padding: 0 40px;
-            }
-            .gallery {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            .container { max-width: 1200px; padding: 0 40px; }
+            .gallery { grid-template-columns: repeat(3, 1fr); }
+            .grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-            html {
-                scroll-behavior: auto;
-            }
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            html { scroll-behavior: auto; }
         }
     </style>
 </head>
@@ -839,87 +685,103 @@
                 </button>
             </div>
 
-            <!-- Содержимое вкладок -->
+            <!-- ===== Вкладка: Торты ===== -->
             <div class="tab-content active" id="cakes" role="tabpanel">
                 <div class="grid">
                     <div class="card animate-on-scroll">
-                        <span class="emoji-big">🎂</span>
-                        <h3>Классический торт</h3>
-                        <p>Бисквит с кремом и ягодами</p>
+                        <span class="emoji-big">🍫</span>
+                        <h3>Сникерс</h3>
+                        <p>Шоколадный бисквит с карамелью и арахисом</p>
                         <div class="price">от 2500 ₽</div>
                         <span class="category-label">Торт</span>
                     </div>
                     <div class="card animate-on-scroll">
-                        <span class="emoji-big">🌸</span>
-                        <h3>Торт «Стася»</h3>
-                        <p>Нежный розовый торт с ягодами</p>
-                        <div class="price">от 2800 ₽</div>
-                        <span class="category-label">Торт</span>
-                    </div>
-                    <div class="card animate-on-scroll">
-                        <span class="emoji-big">🥑</span>
-                        <h3>Фисташковый торт</h3>
-                        <p>С фисташковым бисквитом и кремом</p>
-                        <div class="price">от 3000 ₽</div>
+                        <span class="emoji-big">🍓</span>
+                        <h3>Малиновый</h3>
+                        <p>Нежный бисквит с малиновым кремом</p>
+                        <div class="price">от 2700 ₽</div>
                         <span class="category-label">Торт</span>
                     </div>
                     <div class="card animate-on-scroll">
                         <span class="emoji-big">🍓</span>
-                        <h3>Ягодный торт</h3>
-                        <p>Свежие ягоды и лёгкий крем</p>
-                        <div class="price">от 2700 ₽</div>
+                        <h3>Клубничный</h3>
+                        <p>Свежий клубничный вкус с лёгким кремом</p>
+                        <div class="price">3000 ₽</div>
+                        <span class="category-label">Торт</span>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <span class="emoji-big">🌿</span>
+                        <h3>Мятный</h3>
+                        <p>Освежающий мятный бисквит с шоколадом</p>
+                        <div class="price">от 2600 ₽</div>
+                        <span class="category-label">Торт</span>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <span class="emoji-big">🥛</span>
+                        <h3>Молочная девочка</h3>
+                        <p>Нежные корни с заварным кремом</p>
+                        <div class="price">от 3000 ₽</div>
                         <span class="category-label">Торт</span>
                     </div>
                 </div>
             </div>
 
+            <!-- ===== Вкладка: Рулеты ===== -->
             <div class="tab-content" id="rolls" role="tabpanel">
                 <div class="grid">
                     <div class="card animate-on-scroll">
+                        <span class="emoji-big">🍓</span>
+                        <h3>Меренговый с клубникой и голубикой</h3>
+                        <p>Хрустящая меренга с ягодным кремом</p>
+                        <div class="price">3000 ₽</div>
+                        <span class="category-label">Рулет</span>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <span class="emoji-big">🍊</span>
+                        <h3>Меренговый с мандарином</h3>
+                        <p>Цитрусовая меренга с мандариновым кремом</p>
+                        <div class="price">2500 ₽</div>
+                        <span class="category-label">Рулет</span>
+                    </div>
+                    <div class="card animate-on-scroll">
                         <span class="emoji-big">🍥</span>
-                        <h3>Меренговый рулет</h3>
-                        <p>Воздушная меренга с кремом и фруктами</p>
-                        <div class="price">от 2200 ₽</div>
+                        <h3>Меренговый с малиной</h3>
+                        <p>Хрустящая меренга с малиновым кремом</p>
+                        <div class="price">3500 ₽</div>
                         <span class="category-label">Рулет</span>
                     </div>
                     <div class="card animate-on-scroll">
-                        <span class="emoji-big">🍫</span>
-                        <h3>Шоколадный рулет</h3>
-                        <p>Шоколадный бисквит с кремом</p>
-                        <div class="price">от 2000 ₽</div>
-                        <span class="category-label">Рулет</span>
-                    </div>
-                    <div class="card animate-on-scroll">
-                        <span class="emoji-big">🥥</span>
-                        <h3>Кокосовый рулет</h3>
-                        <p>Нежный кокосовый бисквит с кремом</p>
-                        <div class="price">от 2100 ₽</div>
+                        <span class="emoji-big">🍥</span>
+                        <h3>Меренговый с фисташкой</h3>
+                        <p>Нежная меренга с фисташковым кремом</p>
+                        <div class="price">3500 ₽</div>
                         <span class="category-label">Рулет</span>
                     </div>
                 </div>
             </div>
 
+            <!-- ===== Вкладка: Десерты ===== -->
             <div class="tab-content" id="desserts" role="tabpanel">
                 <div class="grid">
                     <div class="card animate-on-scroll">
                         <span class="emoji-big">🥔</span>
                         <h3>Пирожное «Картошка»</h3>
                         <p>Из бисквитной крошки с масляным кремом</p>
-                        <div class="price">от 800 ₽ / 4 шт</div>
+                        <div class="price">от 800 ₽ / от 4 шт</div>
                         <span class="category-label">Десерт</span>
                     </div>
                     <div class="card animate-on-scroll">
                         <span class="emoji-big">🥞</span>
                         <h3>Вафельные трубочки</h3>
                         <p>Хрустящие вафли с варёной сгущёнкой</p>
-                        <div class="price">от 450 ₽ / 3 шт</div>
+                        <div class="price">от 450 ₽ / от 3 шт</div>
                         <span class="category-label">Десерт</span>
                     </div>
                     <div class="card animate-on-scroll">
-                        <span class="emoji-big">🍮</span>
-                        <h3>Крем-брюле</h3>
-                        <p>Нежный ванильный десерт с карамелью</p>
-                        <div class="price">от 350 ₽</div>
+                        <span class="emoji-big">🍰</span>
+                        <h3>Трайфлы</h3>
+                        <p>Слоёный десерт с кремом и ягодами</p>
+                        <div class="price">от 500 ₽</div>
                         <span class="category-label">Десерт</span>
                     </div>
                 </div>
@@ -927,38 +789,31 @@
         </div>
     </section>
 
-    <!-- ===== GALLERY ===== -->
+    <!-- ===== GALLERY (БЕЗ ПОДПИСЕЙ) ===== -->
     <section id="gallery" class="section">
         <div class="container">
             <h2>📸 Примеры работ</h2>
             <div class="gallery">
                 <div class="gallery-item">
                     <img src="IMG_20260708_110810_041.jpg" alt="Торт с ягодами" loading="lazy" decoding="async">
-                    <div class="caption">🎂 Торт с ягодами</div>
                 </div>
                 <div class="gallery-item">
                     <img src="IMG_20260708_110806_420.jpg" alt="Классический бисквит" loading="lazy" decoding="async">
-                    <div class="caption">🎂 Классический бисквит</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="IMG_20260708_110802_291.jpg" alt="Розовый торт Стася" loading="lazy" decoding="async">
-                    <div class="caption">🌸 Торт «Стася»</div>
+                    <img src="IMG_20260708_110802_291.jpg" alt="Розовый торт" loading="lazy" decoding="async">
                 </div>
                 <div class="gallery-item">
                     <img src="IMG_20260708_110758_772.jpg" alt="Меренговый рулет" loading="lazy" decoding="async">
-                    <div class="caption">🍥 Меренговый рулет</div>
                 </div>
                 <div class="gallery-item">
                     <img src="IMG_20260708_110755_730.jpg" alt="Ягодный разрез" loading="lazy" decoding="async">
-                    <div class="caption">🍓 Ягодный разрез</div>
                 </div>
                 <div class="gallery-item">
                     <img src="IMG_20260708_110752_407.jpg" alt="Фисташковый торт" loading="lazy" decoding="async">
-                    <div class="caption">🥑 Фисташковый торт</div>
                 </div>
                 <div class="gallery-item">
                     <video src="IMG_6982.MOV" autoplay muted loop playsinline loading="lazy"></video>
-                    <div class="caption">🎥 Видео-десерт</div>
                 </div>
             </div>
         </div>
@@ -1054,24 +909,18 @@
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    // Убираем активный класс у всех кнопок
                     tabs.forEach(t => {
                         t.classList.remove('active');
                         t.setAttribute('aria-selected', 'false');
                     });
-
-                    // Добавляем активный класс текущей кнопке
                     this.classList.add('active');
                     this.setAttribute('aria-selected', 'true');
 
-                    // Прячем все содержимое
                     contents.forEach(c => c.classList.remove('active'));
 
-                    // Показываем нужное содержимое
                     const target = document.getElementById(this.dataset.tab);
                     if (target) {
                         target.classList.add('active');
-                        // Перезапускаем анимацию карточек
                         const cards = target.querySelectorAll('.card');
                         cards.forEach((card, index) => {
                             card.style.animation = 'none';
