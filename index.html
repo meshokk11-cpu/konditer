@@ -44,6 +44,7 @@
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         .container {
@@ -75,6 +76,10 @@
             0% { box-shadow: 0 0 0 0 var(--accent-glow); }
             70% { box-shadow: 0 0 0 16px rgba(217, 168, 138, 0); }
             100% { box-shadow: 0 0 0 0 rgba(217, 168, 138, 0); }
+        }
+        @keyframes modalIn {
+            0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .animate-on-scroll {
@@ -286,6 +291,7 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         .card::before {
             content: '';
@@ -356,6 +362,135 @@
             margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        .card .card-hint {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            opacity: 0.5;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 20, 15, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: scaleIn 0.3s ease forwards;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: var(--card);
+            border-radius: var(--radius);
+            max-width: 460px;
+            width: 100%;
+            padding: 36px 32px 32px;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalIn 0.35s ease forwards;
+            border: 1px solid var(--border);
+        }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: transform 0.2s, color 0.2s;
+            line-height: 1;
+            padding: 4px;
+        }
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: var(--text);
+        }
+        .modal .modal-emoji {
+            font-size: 3.6rem;
+            display: block;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .modal h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            color: #4a2c1a;
+            margin-bottom: 4px;
+        }
+        .modal .modal-category {
+            display: block;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+        .modal .modal-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 16px 0;
+        }
+        .modal .modal-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 0.95rem;
+        }
+        .modal .modal-row .label {
+            color: var(--text-light);
+        }
+        .modal .modal-row .value {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .modal .modal-price {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #a7613e;
+            background: #fcf1ea;
+            display: inline-block;
+            padding: 6px 28px;
+            border-radius: 60px;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+        .modal .modal-btn {
+            display: block;
+            width: 100%;
+            margin-top: 18px;
+            padding: 14px;
+            background: linear-gradient(145deg, var(--accent), var(--accent-dark));
+            color: #2e1d12;
+            border: none;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            text-decoration: none;
+            text-align: center;
+            font-family: inherit;
+        }
+        .modal .modal-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 28px var(--accent-glow);
         }
 
         /* ===== КНОПКА ===== */
@@ -566,6 +701,9 @@
             .contact-block { padding: 24px 18px; }
             .contact-block p { font-size: 1rem; }
             .socials a svg { width: 34px; height: 34px; }
+            .modal { padding: 28px 20px 24px; }
+            .modal .modal-emoji { font-size: 2.8rem; }
+            .modal h3 { font-size: 1.3rem; }
         }
 
         @media (max-width: 480px) {
@@ -597,6 +735,13 @@
             .contact-block .icon { width: 28px; font-size: 1.2rem; }
             .socials a svg { width: 30px; height: 30px; }
             footer { font-size: 0.7rem; padding: 16px 0; }
+            .modal { padding: 20px 16px 20px; border-radius: 20px; }
+            .modal .modal-emoji { font-size: 2.4rem; }
+            .modal h3 { font-size: 1.1rem; }
+            .modal .modal-row { font-size: 0.85rem; padding: 4px 0; }
+            .modal .modal-price { font-size: 1.1rem; padding: 4px 20px; }
+            .modal .modal-btn { font-size: 0.9rem; padding: 12px; }
+            .modal-close { font-size: 1.5rem; top: 10px; right: 14px; }
         }
 
         @media (max-width: 360px) {
@@ -626,6 +771,7 @@
             .btn { background: #ddd; color: #000; }
             .socials { display: none; }
             header::before { display: none; }
+            .modal-overlay { display: none !important; }
         }
     </style>
 </head>
@@ -679,30 +825,114 @@
         <!-- Торты -->
         <div class="menu-content active" id="menu-cakes">
             <div class="grid">
-                <div class="card animate-on-scroll"><span class="emoji-big">🍫</span><h3>Сникерс</h3><p>Шоколадный бисквит с карамелью и арахисом</p><div class="price">от 2500 ₽</div><span class="category-label">Торт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍇</span><h3>Малиновый</h3><p>Нежный бисквит с малиновым кремом</p><div class="price">от 2700 ₽</div><span class="category-label">Торт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍓</span><h3>Клубничный</h3><p>Свежий клубничный вкус с лёгким кремом</p><div class="price">3000 ₽</div><span class="category-label">Торт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🌿</span><h3>Мятный</h3><p>Освежающий мятный бисквит с шоколадом</p><div class="price">от 2600 ₽</div><span class="category-label">Торт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🥛</span><h3>Молочная девочка</h3><p>Нежные коржи с заварным кремом</p><div class="price">от 3000 ₽</div><span class="category-label">Торт</span></div>
+                <div class="card animate-on-scroll" data-name="Сникерс" data-emoji="🍫" data-category="Торт" data-price="от 2500 ₽" data-composition="Бисквит шоколадный, крем карамельный, арахис, шоколадная глазурь" data-calories="~420 ккал/100г">
+                    <span class="emoji-big">🍫</span>
+                    <h3>Сникерс</h3>
+                    <p>Шоколадный бисквит с карамелью и арахисом</p>
+                    <div class="price">от 2500 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Малиновый" data-emoji="🍇" data-category="Торт" data-price="от 2700 ₽" data-composition="Бисквит ванильный, крем малиновый, свежая малина, белый шоколад" data-calories="~380 ккал/100г">
+                    <span class="emoji-big">🍇</span>
+                    <h3>Малиновый</h3>
+                    <p>Нежный бисквит с малиновым кремом</p>
+                    <div class="price">от 2700 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Клубничный" data-emoji="🍓" data-category="Торт" data-price="3000 ₽" data-composition="Бисквит ванильный, крем клубничный, свежая клубника, сливки" data-calories="~360 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Клубничный</h3>
+                    <p>Свежий клубничный вкус с лёгким кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Мятный" data-emoji="🌿" data-category="Торт" data-price="от 2600 ₽" data-composition="Бисквит шоколадный, крем мятный, шоколадная глазурь, мята" data-calories="~400 ккал/100г">
+                    <span class="emoji-big">🌿</span>
+                    <h3>Мятный</h3>
+                    <p>Освежающий мятный бисквит с шоколадом</p>
+                    <div class="price">от 2600 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Молочная девочка" data-emoji="🥛" data-category="Торт" data-price="от 3000 ₽" data-composition="Коржи нежные, заварной крем, молочная прослойка" data-calories="~350 ккал/100г">
+                    <span class="emoji-big">🥛</span>
+                    <h3>Молочная девочка</h3>
+                    <p>Нежные коржи с заварным кремом</p>
+                    <div class="price">от 3000 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
             </div>
         </div>
 
         <!-- Рулеты -->
         <div class="menu-content" id="menu-rolls">
             <div class="grid">
-                <div class="card animate-on-scroll"><span class="emoji-big">🍇🟢</span><h3>Меренговый с малиной и фисташкой</h3><p>Хрустящая меренга с малиново-фисташковым кремом</p><div class="price">3500 ₽</div><span class="category-label">Рулет</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍓</span><h3>Меренговый с клубникой</h3><p>Нежная меренга с клубничным кремом</p><div class="price">3000 ₽</div><span class="category-label">Рулет</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍓</span><h3>Меренговый с клубникой и голубикой</h3><p>Хрустящая меренга с ягодным кремом</p><div class="price">3000 ₽</div><span class="category-label">Рулет</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍊</span><h3>Меренговый с мандарином</h3><p>Цитрусовая меренга с мандариновым кремом</p><div class="price">2500 ₽</div><span class="category-label">Рулет</span></div>
+                <div class="card animate-on-scroll" data-name="Меренговый с малиной и фисташкой" data-emoji="🍇🟢" data-category="Рулет" data-price="3500 ₽" data-composition="Меренга хрустящая, крем малиново-фисташковый, свежие ягоды" data-calories="~390 ккал/100г">
+                    <span class="emoji-big">🍇🟢</span>
+                    <h3>Меренговый с малиной и фисташкой</h3>
+                    <p>Хрустящая меренга с малиново-фисташковым кремом</p>
+                    <div class="price">3500 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с клубникой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Меренга нежная, крем клубничный, свежая клубника" data-calories="~370 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Меренговый с клубникой</h3>
+                    <p>Нежная меренга с клубничным кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с клубникой и голубикой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Меренга хрустящая, крем ягодный, клубника, голубика" data-calories="~380 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Меренговый с клубникой и голубикой</h3>
+                    <p>Хрустящая меренга с ягодным кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с мандарином" data-emoji="🍊" data-category="Рулет" data-price="2500 ₽" data-composition="Меренга цитрусовая, крем мандариновый, цедра" data-calories="~360 ккал/100г">
+                    <span class="emoji-big">🍊</span>
+                    <h3>Меренговый с мандарином</h3>
+                    <p>Цитрусовая меренга с мандариновым кремом</p>
+                    <div class="price">2500 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
             </div>
         </div>
 
         <!-- Десерты -->
         <div class="menu-content" id="menu-desserts">
             <div class="grid">
-                <div class="card animate-on-scroll"><span class="emoji-big">🥔</span><h3>Пирожное «Картошка»</h3><p>Из бисквитной крошки с масляным кремом</p><div class="price">от 800 ₽ / от 4 шт</div><span class="category-label">Десерт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🥞</span><h3>Вафельные трубочки</h3><p>Хрустящие вафли с варёной сгущёнкой</p><div class="price">от 450 ₽ / от 3 шт</div><span class="category-label">Десерт</span></div>
-                <div class="card animate-on-scroll"><span class="emoji-big">🍰</span><h3>Трайфлы</h3><p>Слоёный десерт с кремом и ягодами</p><div class="price">от 500 ₽</div><span class="category-label">Десерт</span></div>
+                <div class="card animate-on-scroll" data-name="Пирожное «Картошка»" data-emoji="🥔" data-category="Десерт" data-price="от 800 ₽ / от 4 шт" data-composition="Бисквитная крошка, масляный крем, какао, орехи" data-calories="~450 ккал/100г">
+                    <span class="emoji-big">🥔</span>
+                    <h3>Пирожное «Картошка»</h3>
+                    <p>Из бисквитной крошки с масляным кремом</p>
+                    <div class="price">от 800 ₽ / от 4 шт</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Вафельные трубочки" data-emoji="🥞" data-category="Десерт" data-price="от 450 ₽ / от 3 шт" data-composition="Вафли хрустящие, сгущёнка варёная, шоколадная крошка" data-calories="~420 ккал/100г">
+                    <span class="emoji-big">🥞</span>
+                    <h3>Вафельные трубочки</h3>
+                    <p>Хрустящие вафли с варёной сгущёнкой</p>
+                    <div class="price">от 450 ₽ / от 3 шт</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Трайфлы" data-emoji="🍰" data-category="Десерт" data-price="от 500 ₽" data-composition="Бисквит, крем, свежие ягоды, фрукты, карамель" data-calories="~340 ккал/100г">
+                    <span class="emoji-big">🍰</span>
+                    <h3>Трайфлы</h3>
+                    <p>Слоёный десерт с кремом и ягодами</p>
+                    <div class="price">от 500 ₽</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
             </div>
         </div>
     </section>
@@ -780,6 +1010,24 @@
     </div>
 </footer>
 
+<!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
+<div class="modal-overlay" id="modal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">✕</button>
+        <span class="modal-emoji" id="modalEmoji">🍰</span>
+        <h3 id="modalName">Название</h3>
+        <span class="modal-category" id="modalCategory">Категория</span>
+        <div class="modal-divider"></div>
+        <div class="modal-row"><span class="label">🧾 Состав</span><span class="value" id="modalComposition">—</span></div>
+        <div class="modal-row"><span class="label">🔥 Калорийность</span><span class="value" id="modalCalories">—</span></div>
+        <div class="modal-divider"></div>
+        <div style="text-align: center;">
+            <span class="modal-price" id="modalPrice">—</span>
+        </div>
+        <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="modal-btn">📩 Заказать</a>
+    </div>
+</div>
+
 <!-- ===== СКРИПТ ===== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -812,6 +1060,48 @@
                 const target = document.getElementById(targetId);
                 if (target) target.classList.add('active');
             });
+        });
+
+        // ===== МОДАЛЬНОЕ ОКНО =====
+        const modal = document.getElementById('modal');
+        const modalClose = document.getElementById('modalClose');
+        const modalEmoji = document.getElementById('modalEmoji');
+        const modalName = document.getElementById('modalName');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalComposition = document.getElementById('modalComposition');
+        const modalCalories = document.getElementById('modalCalories');
+        const modalPrice = document.getElementById('modalPrice');
+
+        // Открытие модалки по клику на карточку
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                modalEmoji.textContent = this.dataset.emoji || '🍰';
+                modalName.textContent = this.dataset.name || 'Десерт';
+                modalCategory.textContent = this.dataset.category || '';
+                modalComposition.textContent = this.dataset.composition || '—';
+                modalCalories.textContent = this.dataset.calories || '—';
+                modalPrice.textContent = this.dataset.price || '—';
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Закрытие модалки
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+
+        // Закрытие по клику вне модалки
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
         });
 
     });
