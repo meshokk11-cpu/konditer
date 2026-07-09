@@ -3,32 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Сладкая выпечка от Нафани</title>
-    <meta name="description" content="Ручная кондитерская — торты, рулеты, десерты на заказ в Москве">
+
+    <!-- SEO -->
+    <title>Сладкая выпечка от Нафани — торты, рулеты, десерты на заказ в Москве</title>
+    <meta name="description" content="Ручная кондитерская Нафаня — торты, рулеты и десерты на заказ в Москве. Натуральные ингредиенты, доставка, индивидуальный дизайн.">
+    <meta name="keywords" content="торты на заказ, ручная кондитерская, десерты Москва, торты Москва, Нафаня, кондитерская, сладости, выпечка">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nafanya.ru">
+
+    <meta property="og:title" content="Сладкая выпечка от Нафани — торты, рулеты, десерты">
+    <meta property="og:description" content="Ручная кондитерская в Москве. Торты, рулеты, десерты на заказ. Натуральные ингредиенты, доставка.">
+    <meta property="og:image" content="https://nafanya.ru/og-image.jpg">
+    <meta property="og:url" content="https://nafanya.ru">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Кондитерская Нафаня",
+        "description": "Ручная кондитерская — торты, рулеты, десерты на заказ",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Москва",
+            "streetAddress": "строительный пр. 20к1"
+        },
+        "telephone": "+79160124790",
+        "priceRange": "₽₽",
+        "openingHours": "Mo-Sa 10:00-20:00",
+        "url": "https://nafanya.ru"
+    }
+    </script>
+
     <meta name="theme-color" content="#fdf6f0">
+
     <style>
-        /* ===== БАЗОВЫЙ СБРОС ===== */
+        /* ===== БАЗА ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* ===== ПЕРЕМЕННЫЕ ===== */
         :root {
-            --bg: #fdf6f0;
-            --bg-soft: #fcf3ec;
-            --text: #3e2c1b;
-            --text-light: #6b4f3b;
+            --bg: #fcf8f4;
+            --bg-soft: #f9f0ea;
+            --text: #2c1f17;
+            --text-light: #6b5544;
             --card: #ffffff;
-            --border: #edd7cb;
-            --accent: #d9a88a;
-            --accent-dark: #c49072;
-            --accent-glow: rgba(217, 168, 138, 0.25);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.10);
-            --radius: 28px;
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --border: #e8dbd1;
+            --accent: #dcb69b;
+            --accent-dark: #c49a7d;
+            --accent-glow: rgba(220, 182, 155, 0.25);
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 24px 56px rgba(0, 0, 0, 0.09);
+            --radius: 32px;
+            --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            --header-bg: linear-gradient(145deg, #f5e4d8, #efd5c6);
+            --header-text: #2c1f17;
+            --header-sub-bg: rgba(255, 255, 255, 0.5);
+            --footer-bg: #2c1f17;
+            --footer-text: #e6d4c6;
+            --modal-bg: #ffffff;
+            --modal-border: #e8dbd1;
+            --price-bg: #f8ede6;
+            --price-text: #a87b62;
+            --card-hint-opacity: 0.5;
         }
 
         html {
@@ -38,7 +79,7 @@
         }
 
         body {
-            font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -54,7 +95,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 clamp(12px, 3vw, 40px);
+            padding: 0 clamp(16px, 3vw, 40px);
             width: 100%;
         }
 
@@ -64,7 +105,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes scaleIn {
-            0% { opacity: 0; transform: scale(0.95); }
+            0% { opacity: 0; transform: scale(0.96); }
             100% { opacity: 1; transform: scale(1); }
         }
         @keyframes floatSoft {
@@ -78,8 +119,8 @@
         }
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 0 0 var(--accent-glow); }
-            70% { box-shadow: 0 0 0 16px rgba(217, 168, 138, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(217, 168, 138, 0); }
+            70% { box-shadow: 0 0 0 18px rgba(220, 182, 155, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 182, 155, 0); }
         }
         @keyframes modalIn {
             0% { opacity: 0; transform: scale(0.92) translateY(20px); }
@@ -88,20 +129,20 @@
 
         .animate-on-scroll {
             opacity: 0;
-            animation: fadeUp 0.6s ease forwards;
+            animation: fadeUp 0.7s ease forwards;
         }
         .animate-on-scroll:nth-child(1) { animation-delay: 0.05s; }
-        .animate-on-scroll:nth-child(2) { animation-delay: 0.12s; }
-        .animate-on-scroll:nth-child(3) { animation-delay: 0.19s; }
-        .animate-on-scroll:nth-child(4) { animation-delay: 0.26s; }
-        .animate-on-scroll:nth-child(5) { animation-delay: 0.33s; }
+        .animate-on-scroll:nth-child(2) { animation-delay: 0.13s; }
+        .animate-on-scroll:nth-child(3) { animation-delay: 0.21s; }
+        .animate-on-scroll:nth-child(4) { animation-delay: 0.29s; }
+        .animate-on-scroll:nth-child(5) { animation-delay: 0.37s; }
 
         /* ===== HEADER ===== */
         header {
-            background: linear-gradient(145deg, #fce4d6, #f5c8b0);
-            padding: clamp(32px, 6vw, 50px) 0 clamp(24px, 4vw, 36px);
+            background: var(--header-bg);
+            padding: clamp(36px, 6vw, 56px) 0 clamp(24px, 4vw, 36px);
             text-align: center;
-            border-bottom: 4px solid var(--accent);
+            border-bottom: 3px solid var(--accent);
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
@@ -113,89 +154,90 @@
             left: -30%;
             width: 160%;
             height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
-            animation: floatSoft 12s ease-in-out infinite;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+            animation: floatSoft 14s ease-in-out infinite;
             pointer-events: none;
         }
         header .header-inner {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(10px, 2vw, 18px);
+            gap: clamp(12px, 2vw, 20px);
             flex-wrap: wrap;
             position: relative;
             z-index: 1;
         }
         header h1 {
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 300;
-            letter-spacing: 1px;
-            color: #3d2317;
+            letter-spacing: 1.5px;
+            color: var(--header-text);
         }
         header h1 span {
-            background: rgba(255, 255, 255, 0.35);
-            padding: 0 clamp(10px, 2vw, 16px);
-            border-radius: 60px;
+            background: var(--header-sub-bg);
+            padding: 0 clamp(14px, 2vw, 20px);
+            border-radius: 80px;
             display: inline-block;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
         }
         header .deco-icon {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            font-size: clamp(2rem, 4.5vw, 2.8rem);
             display: inline-block;
-            animation: floatSoft 3s ease-in-out infinite;
+            animation: floatSoft 3.2s ease-in-out infinite;
         }
         header .header-telegram {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s var(--transition);
-            animation: floatSoft 3s ease-in-out infinite 0.5s;
+            animation: floatSoft 3.2s ease-in-out infinite 0.5s;
             text-decoration: none;
         }
         header .header-telegram:hover {
-            transform: scale(1.10) rotate(-4deg);
+            transform: scale(1.12) rotate(-4deg);
         }
         header .header-telegram svg {
-            width: clamp(40px, 7vw, 52px);
-            height: clamp(40px, 7vw, 52px);
+            width: clamp(44px, 7vw, 56px);
+            height: clamp(44px, 7vw, 56px);
             display: block;
             border-radius: 50%;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
             transition: box-shadow 0.3s;
         }
         header .header-telegram:hover svg {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.11);
         }
         header .header-sub {
-            font-size: clamp(0.9rem, 2vw, 1.15rem);
-            color: #4f3222;
-            margin-top: 8px;
-            background: rgba(255, 255, 255, 0.4);
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            color: var(--header-text);
+            margin-top: 10px;
+            background: var(--header-sub-bg);
             display: inline-block;
-            padding: 4px clamp(16px, 3vw, 28px);
-            border-radius: 60px;
-            backdrop-filter: blur(4px);
+            padding: 6px clamp(20px, 3vw, 32px);
+            border-radius: 80px;
+            backdrop-filter: blur(6px);
             position: relative;
             z-index: 1;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
-        /* ===== НАВИГАЦИЯ (вкладки разделов) ===== */
+        /* ===== ВКЛАДКИ РАЗДЕЛОВ ===== */
         .section-tabs {
             display: flex;
             justify-content: center;
-            gap: clamp(6px, 1.5vw, 12px);
-            margin: clamp(20px, 4vw, 32px) 0 clamp(24px, 4vw, 36px);
+            gap: clamp(8px, 1.5vw, 14px);
+            margin: clamp(28px, 4vw, 40px) 0 clamp(28px, 4vw, 40px);
             flex-wrap: wrap;
             flex-shrink: 0;
         }
         .section-tab {
-            padding: clamp(6px, 1.2vw, 12px) clamp(14px, 2.5vw, 28px);
+            padding: clamp(8px, 1.2vw, 14px) clamp(18px, 2.5vw, 32px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(4px);
             color: var(--text-light);
-            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+            font-size: clamp(0.8rem, 1.2vw, 0.95rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
@@ -203,60 +245,62 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             text-align: center;
             white-space: nowrap;
+            backdrop-filter: blur(4px);
         }
         .section-tab:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             border-color: var(--accent);
-            box-shadow: 0 6px 20px var(--accent-glow);
+            box-shadow: 0 8px 24px var(--accent-glow);
         }
         .section-tab.active {
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2e1d12;
+            color: #2c1f17;
             border-color: var(--accent-dark);
-            box-shadow: 0 6px 24px var(--accent-glow);
+            box-shadow: 0 8px 28px var(--accent-glow);
         }
 
-        /* ===== КОНТЕНТ РАЗДЕЛОВ ===== */
+        /* ===== КОНТЕНТ ===== */
         .section-content {
             display: none;
             flex: 1;
         }
         .section-content.active {
             display: block;
-            animation: scaleIn 0.4s ease forwards;
+            animation: scaleIn 0.45s ease forwards;
         }
 
         /* ===== ВКЛАДКИ МЕНЮ ===== */
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: clamp(4px, 1vw, 10px);
-            margin-bottom: clamp(20px, 4vw, 32px);
+            gap: clamp(6px, 1vw, 12px);
+            margin-bottom: clamp(24px, 4vw, 36px);
             flex-wrap: wrap;
         }
         .menu-tab {
-            padding: clamp(4px, 1vw, 8px) clamp(12px, 2vw, 22px);
+            padding: clamp(6px, 1vw, 10px) clamp(14px, 2vw, 24px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
             color: var(--text-light);
-            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            font-size: clamp(0.75rem, 1vw, 0.9rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
             font-family: inherit;
             white-space: nowrap;
+            backdrop-filter: blur(4px);
         }
         .menu-tab:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             border-color: var(--accent);
-            box-shadow: 0 4px 16px var(--accent-glow);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
         .menu-tab.active {
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2e1d12;
+            color: #2c1f17;
             border-color: var(--accent-dark);
-            box-shadow: 0 4px 20px var(--accent-glow);
+            box-shadow: 0 6px 24px var(--accent-glow);
         }
         .menu-tab .tab-icon {
             margin-right: 4px;
@@ -272,25 +316,25 @@
 
         /* ===== ЗАГОЛОВКИ ===== */
         .section-title {
-            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             font-weight: 300;
-            margin-bottom: clamp(20px, 4vw, 28px);
-            color: #3d2317;
-            border-left: clamp(4px, 0.6vw, 6px) solid var(--accent);
-            padding-left: clamp(12px, 2vw, 18px);
+            margin-bottom: clamp(24px, 4vw, 32px);
+            color: var(--text);
+            border-left: 5px solid var(--accent);
+            padding-left: clamp(14px, 2vw, 20px);
             letter-spacing: 0.5px;
         }
 
         /* ===== КАРТОЧКИ ===== */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 22vw, 240px), 1fr));
-            gap: clamp(14px, 2.5vw, 24px);
+            grid-template-columns: repeat(auto-fit, minmax(clamp(170px, 22vw, 250px), 1fr));
+            gap: clamp(18px, 2.5vw, 28px);
         }
         .card {
             background: var(--card);
-            border-radius: clamp(18px, 2.5vw, var(--radius));
-            padding: clamp(16px, 2.5vw, 26px) clamp(12px, 2vw, 20px) clamp(14px, 2vw, 22px);
+            border-radius: clamp(20px, 2.5vw, var(--radius));
+            padding: clamp(20px, 2.5vw, 28px) clamp(14px, 2vw, 22px) clamp(18px, 2vw, 24px);
             box-shadow: var(--shadow);
             text-align: center;
             border: 1px solid var(--border);
@@ -302,7 +346,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            min-height: clamp(240px, 35vh, 340px);
+            min-height: clamp(250px, 36vh, 350px);
         }
         .card::before {
             content: '';
@@ -311,9 +355,9 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), #f0b8a0, var(--accent));
+            background: linear-gradient(90deg, var(--accent), #f0d0bf, var(--accent));
             background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
+            animation: shimmer 4s linear infinite;
             opacity: 0;
             transition: opacity 0.4s;
         }
@@ -321,12 +365,12 @@
             opacity: 1;
         }
         .card:hover {
-            transform: translateY(-8px) scale(1.01);
+            transform: translateY(-10px) scale(1.01);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
         .card .emoji-big {
-            font-size: clamp(2.6rem, 6vw, 4rem);
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
             display: block;
             margin-bottom: 8px;
             line-height: 1.2;
@@ -336,50 +380,50 @@
             transform: scale(1.12) rotate(-4deg);
         }
         .card h3 {
-            font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
             margin-bottom: 4px;
-            color: #4a2c1a;
+            color: var(--text);
             font-weight: 600;
         }
         .card p {
             color: var(--text-light);
-            font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+            font-size: clamp(0.8rem, 1.1vw, 0.95rem);
             margin-bottom: 8px;
             flex-grow: 1;
         }
         .card .price {
-            color: #a7613e;
+            color: var(--price-text);
             font-weight: 700;
-            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-            background: #fcf1ea;
+            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            background: var(--price-bg);
             display: inline-block;
-            padding: 3px clamp(12px, 2vw, 18px);
+            padding: 4px clamp(14px, 2vw, 20px);
             border-radius: 60px;
             margin-top: auto;
             transition: all 0.3s;
         }
         .card:hover .price {
-            background: #fce8dd;
             transform: scale(1.04);
         }
         .category-label {
             display: inline-block;
             background: var(--accent);
-            color: #2e1d12;
+            color: #2c1f17;
             font-size: clamp(0.55rem, 0.7vw, 0.65rem);
             font-weight: 700;
             padding: 2px clamp(10px, 1.5vw, 14px);
             border-radius: 60px;
             margin-top: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
         }
         .card .card-hint {
             font-size: clamp(0.6rem, 0.7vw, 0.7rem);
             color: var(--text-light);
-            opacity: 0.5;
+            opacity: var(--card-hint-opacity);
             margin-top: 6px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
+            font-weight: 300;
         }
 
         /* ===== МОДАЛЬНОЕ ОКНО ===== */
@@ -391,8 +435,8 @@
             right: 0;
             bottom: 0;
             background: rgba(30, 20, 15, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -403,27 +447,27 @@
             display: flex;
         }
         .modal {
-            background: var(--card);
-            border-radius: clamp(20px, 3vw, var(--radius));
-            max-width: 460px;
+            background: var(--modal-bg);
+            border-radius: clamp(24px, 3vw, var(--radius));
+            max-width: 480px;
             width: 100%;
-            padding: clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
+            padding: clamp(28px, 4vw, 40px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
             position: relative;
-            animation: modalIn 0.35s ease forwards;
-            border: 1px solid var(--border);
+            animation: modalIn 0.4s ease forwards;
+            border: 1px solid var(--modal-border);
             margin: 0 12px;
         }
         .modal-close {
             position: absolute;
-            top: clamp(10px, 1.5vw, 14px);
-            right: clamp(14px, 2vw, 18px);
+            top: clamp(12px, 1.5vw, 16px);
+            right: clamp(16px, 2vw, 22px);
             background: none;
             border: none;
-            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
             cursor: pointer;
             color: var(--text-light);
-            transition: transform 0.2s, color 0.2s;
+            transition: transform 0.3s, color 0.3s;
             line-height: 1;
             padding: 4px;
         }
@@ -432,35 +476,35 @@
             color: var(--text);
         }
         .modal .modal-emoji {
-            font-size: clamp(2.8rem, 6vw, 3.6rem);
+            font-size: clamp(3rem, 6vw, 4rem);
             display: block;
             text-align: center;
             margin-bottom: 4px;
         }
         .modal h3 {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.4rem, 2.5vw, 1.6rem);
             font-weight: 600;
             text-align: center;
-            color: #4a2c1a;
+            color: var(--text);
             margin-bottom: 2px;
         }
         .modal .modal-category {
             display: block;
             text-align: center;
-            font-size: clamp(0.7rem, 1vw, 0.8rem);
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
             color: var(--text-light);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .modal .modal-divider {
             height: 1px;
             background: var(--border);
-            margin: clamp(10px, 1.5vw, 16px) 0;
+            margin: clamp(12px, 1.5vw, 18px) 0;
         }
         .modal .modal-row {
             display: flex;
             justify-content: space-between;
             padding: 4px 0;
-            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
             gap: 8px;
         }
         .modal .modal-row .label {
@@ -474,13 +518,13 @@
         }
         .modal .modal-price {
             text-align: center;
-            margin-top: 12px;
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-top: 14px;
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
             font-weight: 700;
-            color: #a7613e;
-            background: #fcf1ea;
+            color: var(--price-text);
+            background: var(--price-bg);
             display: inline-block;
-            padding: 4px clamp(20px, 3vw, 28px);
+            padding: 6px clamp(24px, 3vw, 32px);
             border-radius: 60px;
             margin-left: auto;
             margin-right: auto;
@@ -489,13 +533,13 @@
         .modal .modal-btn {
             display: block;
             width: 100%;
-            margin-top: 16px;
-            padding: clamp(12px, 1.5vw, 14px);
+            margin-top: 18px;
+            padding: clamp(14px, 1.5vw, 16px);
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2e1d12;
+            color: #2c1f17;
             border: none;
             border-radius: 60px;
-            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s var(--transition);
@@ -508,23 +552,24 @@
             box-shadow: 0 8px 28px var(--accent-glow);
         }
 
-        /* ===== КНОПКА ===== */
+        /* ===== КНОПКИ ===== */
         .btn {
             display: inline-block;
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2e1d12;
-            padding: clamp(14px, 2vw, 16px) clamp(28px, 5vw, 44px);
+            color: #2c1f17;
+            padding: clamp(16px, 2vw, 18px) clamp(32px, 5vw, 48px);
             border-radius: 60px;
             font-weight: 700;
             text-decoration: none;
-            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+            font-size: clamp(1rem, 1.3vw, 1.1rem);
             transition: all 0.3s var(--transition);
-            box-shadow: 0 6px 24px var(--accent-glow);
+            box-shadow: 0 8px 28px var(--accent-glow);
             border: none;
             cursor: pointer;
             text-align: center;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.3px;
         }
         .btn::after {
             content: '';
@@ -533,7 +578,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.4s;
         }
@@ -541,123 +586,124 @@
             opacity: 1;
         }
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 36px rgba(196, 144, 114, 0.4);
+            transform: scale(1.04);
+            box-shadow: 0 12px 40px rgba(196, 154, 125, 0.45);
         }
         .btn-pulse {
-            animation: pulseGlow 2s ease-in-out infinite;
+            animation: pulseGlow 2.4s ease-in-out infinite;
         }
 
         /* ===== ГАЛЕРЕЯ ===== */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(130px, 18vw, 180px), 1fr));
-            gap: clamp(12px, 1.8vw, 18px);
+            grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 18vw, 190px), 1fr));
+            gap: clamp(14px, 2vw, 20px);
         }
         .gallery-item {
             background: var(--card);
-            border-radius: clamp(16px, 2vw, 20px);
-            padding: clamp(6px, 1vw, 10px);
+            border-radius: clamp(18px, 2vw, 22px);
+            padding: clamp(8px, 1vw, 12px);
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.4s var(--transition);
         }
         .gallery-item:hover {
-            transform: translateY(-6px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
         .gallery-item img,
         .gallery-item video {
             width: 100%;
-            height: clamp(120px, 18vw, 170px);
+            height: clamp(130px, 18vw, 180px);
             object-fit: cover;
             object-position: center;
-            border-radius: clamp(10px, 1.5vw, 14px);
+            border-radius: clamp(12px, 1.5vw, 16px);
             display: block;
             background: #f0e8e0;
-            transition: transform 0.5s var(--transition);
+            transition: transform 0.6s var(--transition);
         }
         .gallery-item:hover img,
         .gallery-item:hover video {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         /* ===== ШАГИ ===== */
         .steps {
             display: flex;
             flex-wrap: wrap;
-            gap: clamp(12px, 2vw, 20px);
+            gap: clamp(14px, 2vw, 22px);
             justify-content: center;
         }
         .step {
-            flex: 1 1 clamp(140px, 20vw, 200px);
+            flex: 1 1 clamp(150px, 20vw, 210px);
             background: var(--bg-soft);
-            padding: clamp(16px, 2.5vw, 24px) clamp(14px, 2vw, 18px);
-            border-radius: clamp(28px, 3.5vw, 36px);
+            padding: clamp(20px, 2.5vw, 28px) clamp(16px, 2vw, 22px);
+            border-radius: clamp(32px, 3.5vw, 40px);
             text-align: center;
             border: 2px solid transparent;
             transition: all 0.3s var(--transition);
         }
         .step:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px var(--accent-glow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 32px var(--accent-glow);
         }
         .step .num {
-            font-size: clamp(2rem, 4vw, 2.6rem);
+            font-size: clamp(2.2rem, 4vw, 2.8rem);
             font-weight: 300;
             color: var(--accent);
             display: block;
             margin-bottom: 2px;
         }
         .step h3 {
-            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
-            color: #4a2c1a;
+            font-size: clamp(1rem, 1.3vw, 1.1rem);
+            color: var(--text);
             font-weight: 600;
         }
         .step p {
             color: var(--text-light);
-            font-size: clamp(0.75rem, 1vw, 0.85rem);
+            font-size: clamp(0.8rem, 1vw, 0.9rem);
         }
 
         /* ===== КОНТАКТЫ ===== */
         .contact-block {
-            background: linear-gradient(145deg, #fcf3ec, #f8ede6);
-            padding: clamp(24px, 4vw, 36px) clamp(18px, 3vw, 28px);
-            border-radius: clamp(32px, 4vw, 48px);
+            background: var(--bg-soft);
+            padding: clamp(28px, 4vw, 40px) clamp(20px, 3vw, 32px);
+            border-radius: clamp(36px, 4vw, 52px);
             text-align: center;
-            max-width: 620px;
+            max-width: 640px;
             margin: 0 auto;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
-            transition: box-shadow 0.3s;
+            transition: all 0.3s ease;
         }
         .contact-block:hover {
             box-shadow: var(--shadow-hover);
         }
         .contact-block p {
-            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
-            margin: clamp(6px, 1vw, 10px) 0;
+            font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+            margin: clamp(8px, 1vw, 12px) 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: clamp(6px, 1vw, 10px);
+            gap: clamp(8px, 1vw, 12px);
             flex-wrap: wrap;
+            color: var(--text);
         }
         .contact-block .icon {
-            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+            font-size: clamp(1.3rem, 1.8vw, 1.6rem);
             display: inline-block;
-            width: clamp(28px, 3vw, 36px);
+            width: clamp(30px, 3vw, 38px);
             flex-shrink: 0;
         }
 
         .socials {
-            margin-top: clamp(14px, 2vw, 20px);
+            margin-top: clamp(16px, 2vw, 22px);
             display: flex;
             justify-content: center;
-            gap: clamp(12px, 2vw, 18px);
+            gap: clamp(14px, 2vw, 20px);
             flex-wrap: wrap;
         }
         .socials a {
@@ -672,8 +718,8 @@
             transform: scale(1.14) rotate(-4deg);
         }
         .socials a svg {
-            width: clamp(30px, 4vw, 38px);
-            height: clamp(30px, 4vw, 38px);
+            width: clamp(34px, 4vw, 42px);
+            height: clamp(34px, 4vw, 42px);
             display: block;
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -683,20 +729,52 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.10);
         }
 
+        /* ===== КНОПКА ПОДЕЛИТЬСЯ В КОНТАКТАХ ===== */
+        .share-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: clamp(12px, 1.5vw, 16px) clamp(28px, 4vw, 40px);
+            border-radius: 60px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            font-family: inherit;
+            box-shadow: var(--shadow);
+            width: auto;
+            backdrop-filter: blur(4px);
+        }
+        .share-contact-btn:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+            background: var(--accent);
+            color: #2c1f17;
+        }
+        .share-contact-btn .icon {
+            font-size: 1.3rem;
+        }
+
         /* ===== ФУТЕР ===== */
         footer {
-            background: #3e2c1b;
-            color: #e6d4c6;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
-            padding: clamp(20px, 3vw, 28px) 0;
-            font-size: clamp(0.7rem, 1vw, 0.9rem);
+            padding: clamp(24px, 3vw, 32px) 0;
+            font-size: clamp(0.75rem, 1vw, 0.95rem);
             letter-spacing: 0.5px;
             margin-top: auto;
             flex-shrink: 0;
         }
         footer .footer-heart {
             display: inline-block;
-            animation: floatSoft 2s ease-in-out infinite;
+            animation: floatSoft 2.2s ease-in-out infinite;
             color: #e6a88a;
         }
 
@@ -705,60 +783,63 @@
         @media (max-width: 768px) {
             .section-tab { white-space: normal; }
             .menu-tab { white-space: normal; }
-            .grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+            .share-contact-btn { padding: 10px 24px; font-size: 0.9rem; }
         }
 
         @media (max-width: 480px) {
-            .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .card { min-height: 200px; padding: 12px 8px 12px; }
-            .card .emoji-big { font-size: 2.2rem; }
-            .card h3 { font-size: 0.85rem; }
-            .card p { font-size: 0.7rem; }
-            .card .price { font-size: 0.8rem; padding: 2px 10px; }
+            .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .card { min-height: 210px; padding: 14px 10px 14px; }
+            .card .emoji-big { font-size: 2.4rem; }
+            .card h3 { font-size: 0.9rem; }
+            .card p { font-size: 0.75rem; }
+            .card .price { font-size: 0.85rem; padding: 2px 12px; }
             .card .card-hint { font-size: 0.55rem; }
             .category-label { font-size: 0.5rem; padding: 1px 8px; }
-            .gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .gallery-item { padding: 4px; }
+            .gallery { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .gallery-item { padding: 6px; }
             .gallery-item img,
-            .gallery-item video { height: 100px; }
-            .step { flex: 1 1 100px; padding: 12px 8px; }
-            .step .num { font-size: 1.6rem; }
-            .step h3 { font-size: 0.8rem; }
-            .step p { font-size: 0.7rem; }
-            .modal { margin: 0 8px; padding: 16px 14px 18px; }
-            .modal .modal-row { font-size: 0.8rem; flex-wrap: wrap; justify-content: center; }
+            .gallery-item video { height: 110px; }
+            .step { flex: 1 1 100px; padding: 14px 10px; }
+            .step .num { font-size: 1.8rem; }
+            .step h3 { font-size: 0.85rem; }
+            .step p { font-size: 0.75rem; }
+            .modal { margin: 0 8px; padding: 18px 16px 20px; }
+            .modal .modal-row { font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
             .modal .modal-row .value { text-align: center; }
-            .section-tab { font-size: 0.7rem; padding: 4px 10px; }
-            .menu-tab { font-size: 0.65rem; padding: 3px 8px; }
-            .section-title { font-size: 1.1rem; padding-left: 10px; border-left-width: 3px; }
-            header h1 { font-size: 1.5rem; }
-            header .deco-icon { font-size: 1.5rem; }
-            header .header-telegram svg { width: 34px; height: 34px; }
-            header .header-sub { font-size: 0.8rem; padding: 2px 12px; }
-            .contact-block { padding: 14px 12px; }
-            .contact-block p { font-size: 0.8rem; margin: 4px 0; }
-            .contact-block .icon { width: 24px; font-size: 1rem; }
-            .socials a svg { width: 28px; height: 28px; }
-            .btn { padding: 10px 20px; font-size: 0.85rem; }
-            footer { font-size: 0.65rem; padding: 14px 0; }
+            .section-tab { font-size: 0.75rem; padding: 6px 12px; }
+            .menu-tab { font-size: 0.7rem; padding: 4px 10px; }
+            .section-title { font-size: 1.2rem; padding-left: 12px; border-left-width: 4px; }
+            header h1 { font-size: 1.6rem; }
+            header .deco-icon { font-size: 1.6rem; }
+            header .header-telegram svg { width: 38px; height: 38px; }
+            header .header-sub { font-size: 0.85rem; padding: 4px 14px; }
+            .contact-block { padding: 16px 14px; }
+            .contact-block p { font-size: 0.85rem; margin: 4px 0; }
+            .contact-block .icon { width: 26px; font-size: 1.1rem; }
+            .socials a svg { width: 30px; height: 30px; }
+            .btn { padding: 12px 24px; font-size: 0.9rem; }
+            footer { font-size: 0.7rem; padding: 16px 0; }
+            .share-contact-btn { padding: 10px 18px; font-size: 0.8rem; gap: 6px; }
+            .share-contact-btn .icon { font-size: 1rem; }
         }
 
         @media (max-width: 380px) {
-            .grid { grid-template-columns: 1fr; gap: 10px; }
+            .grid { grid-template-columns: 1fr; gap: 12px; }
             .gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .section-tab { font-size: 0.6rem; padding: 3px 8px; }
-            .menu-tab { font-size: 0.6rem; padding: 3px 6px; }
-            .card { min-height: 180px; }
-            .card .emoji-big { font-size: 2rem; }
+            .section-tab { font-size: 0.65rem; padding: 4px 10px; }
+            .menu-tab { font-size: 0.6rem; padding: 3px 8px; }
+            .card { min-height: 190px; }
+            .card .emoji-big { font-size: 2.2rem; }
             .gallery-item img,
-            .gallery-item video { height: 80px; }
+            .gallery-item video { height: 90px; }
         }
 
         @media (min-width: 1200px) {
             .container { padding: 0 40px; }
             .gallery { grid-template-columns: repeat(3, 1fr); }
-            .grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
-            .card { min-height: 340px; }
+            .grid { grid-template-columns: repeat(4, 1fr); gap: 30px; }
+            .card { min-height: 360px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -776,6 +857,7 @@
             .socials { display: none; }
             header::before { display: none; }
             .modal-overlay { display: none !important; }
+            .share-contact-btn { display: none; }
             footer { margin-top: 0; }
         }
     </style>
@@ -818,7 +900,7 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: МЕНЮ ===== -->
 <div class="section-content active" id="section-menu">
-    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
+    <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
         <h2 class="section-title">🍩 Наше меню</h2>
 
         <div class="menu-tabs" role="tablist">
@@ -946,7 +1028,7 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: ГАЛЕРЕЯ ===== -->
 <div class="section-content" id="section-gallery">
-    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
+    <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
         <h2 class="section-title">📸 Примеры работ</h2>
         <div class="gallery">
             <div class="gallery-item"><img src="IMG_20260708_110810_041.jpg" alt="Торт" loading="lazy" decoding="async"></div>
@@ -969,14 +1051,14 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: ЗАКАЗ ===== -->
 <div class="section-content" id="section-order">
-    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
+    <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
         <h2 class="section-title">📦 Как заказать</h2>
         <div class="steps">
             <div class="step"><span class="num">1</span><h3>Выберите десерт</h3><p>Из меню или свой рецепт</p></div>
             <div class="step"><span class="num">2</span><h3>Согласуйте детали</h3><p>Вес, декор, дата доставки</p></div>
             <div class="step"><span class="num">3</span><h3>Получите вкус</h3><p>Самовывоз или доставка</p></div>
         </div>
-        <div style="text-align:center; margin-top:clamp(28px, 5vw, 36px);">
+        <div style="text-align:center; margin-top:clamp(32px, 5vw, 40px);">
             <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="btn btn-pulse">✨ Сделать заказ ✨</a>
         </div>
     </section>
@@ -985,7 +1067,7 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: КОНТАКТЫ ===== -->
 <div class="section-content" id="section-contacts">
-    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
+    <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
         <h2 class="section-title">📬 Свяжитесь со мной</h2>
         <div class="contact-block">
             <p><span class="icon">📱</span> +7 (916) 012-47-90</p>
@@ -1004,6 +1086,10 @@
                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#FF6B00"/><text x="12" y="17" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">М</text></svg>
                 </a>
             </div>
+
+            <button class="share-contact-btn" id="shareContactBtn">
+                <span class="icon">📤</span> Поделиться
+            </button>
         </div>
     </section>
 </div>
@@ -1037,7 +1123,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        // ===== Вкладки разделов =====
+        // ===== 1. ВКЛАДКИ РАЗДЕЛОВ =====
         const sectionTabs = document.querySelectorAll('.section-tab');
         const sectionContents = document.querySelectorAll('.section-content');
 
@@ -1052,7 +1138,7 @@
             });
         });
 
-        // ===== Вкладки меню =====
+        // ===== 2. ВКЛАДКИ МЕНЮ =====
         const menuTabs = document.querySelectorAll('.menu-tab');
         const menuContents = document.querySelectorAll('.menu-content');
 
@@ -1067,7 +1153,7 @@
             });
         });
 
-        // ===== МОДАЛЬНОЕ ОКНО =====
+        // ===== 3. МОДАЛЬНОЕ ОКНО =====
         const modal = document.getElementById('modal');
         const modalClose = document.getElementById('modalClose');
         const modalEmoji = document.getElementById('modalEmoji');
@@ -1102,6 +1188,59 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
+
+        // ===== 4. КНОПКА «ПОДЕЛИТЬСЯ» В КОНТАКТАХ =====
+        const shareBtn = document.getElementById('shareContactBtn');
+
+        shareBtn.addEventListener('click', function() {
+            const url = window.location.href;
+            const title = 'Сладкая выпечка от Нафани — торты, рулеты, десерты на заказ';
+
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: 'Ручная кондитерская в Москве. Торты, рулеты, десерты на заказ 🍰',
+                    url: url
+                }).catch(() => {});
+            } else {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(url).then(() => {
+                        showShareFeedback('✅ Ссылка скопирована!');
+                    }).catch(() => {
+                        fallbackShare(url);
+                    });
+                } else {
+                    fallbackShare(url);
+                }
+            }
+        });
+
+        function fallbackShare(url) {
+            const input = document.createElement('input');
+            input.value = url;
+            document.body.appendChild(input);
+            input.select();
+            try {
+                document.execCommand('copy');
+                showShareFeedback('✅ Ссылка скопирована!');
+            } catch (e) {
+                showShareFeedback('📤 Поделитесь ссылкой: ' + url);
+            }
+            document.body.removeChild(input);
+        }
+
+        function showShareFeedback(message) {
+            const btn = document.getElementById('shareContactBtn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<span class="icon">✅</span> ${message}`;
+            btn.style.background = 'var(--accent)';
+            btn.style.color = '#2c1f17';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+                btn.style.color = '';
+            }, 3000);
+        }
 
     });
 </script>
