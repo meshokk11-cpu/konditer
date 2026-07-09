@@ -70,7 +70,6 @@
             --price-bg: #f8ede6;
             --price-text: #a87b62;
             --card-hint-opacity: 0.5;
-            /* Размеры для таргетов */
             --tap-size: 48px;
             --btn-min-height: 52px;
         }
@@ -227,7 +226,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* ===== ВКЛАДКИ РАЗДЕЛОВ ===== */
+        /* ===== ВКЛАДКИ РАЗДЕЛОВ (увеличены для телефона) ===== */
         .section-tabs {
             display: flex;
             justify-content: center;
@@ -237,12 +236,12 @@
             flex-shrink: 0;
         }
         .section-tab {
-            padding: clamp(12px, 1.2vw, 16px) clamp(22px, 2.5vw, 36px);
+            padding: clamp(14px, 1.2vw, 16px) clamp(24px, 2.5vw, 36px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
             color: var(--text-light);
-            font-size: clamp(1rem, 1.2vw, 0.95rem);
+            font-size: clamp(1.1rem, 1.2vw, 0.95rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
@@ -251,11 +250,12 @@
             text-align: center;
             white-space: nowrap;
             backdrop-filter: blur(4px);
-            min-height: var(--btn-min-height);
+            min-height: clamp(56px, 8vw, 52px);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             touch-action: manipulation;
+            flex: 0 1 auto;
         }
         .section-tab:hover {
             transform: translateY(-4px);
@@ -279,32 +279,33 @@
             animation: scaleIn 0.45s ease forwards;
         }
 
-        /* ===== ВКЛАДКИ МЕНЮ ===== */
+        /* ===== ВКЛАДКИ МЕНЮ (увеличены для телефона) ===== */
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: clamp(8px, 1vw, 14px);
+            gap: clamp(10px, 1vw, 14px);
             margin-bottom: clamp(24px, 4vw, 36px);
             flex-wrap: wrap;
         }
         .menu-tab {
-            padding: clamp(10px, 1vw, 12px) clamp(18px, 2vw, 28px);
+            padding: clamp(14px, 1vw, 12px) clamp(22px, 2vw, 28px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
             color: var(--text-light);
-            font-size: clamp(0.95rem, 1vw, 0.9rem);
+            font-size: clamp(1.05rem, 1vw, 0.9rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
             font-family: inherit;
             white-space: nowrap;
             backdrop-filter: blur(4px);
-            min-height: var(--btn-min-height);
+            min-height: clamp(56px, 8vw, 52px);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             touch-action: manipulation;
+            flex: 0 1 auto;
         }
         .menu-tab:hover {
             transform: translateY(-3px);
@@ -760,7 +761,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.10);
         }
 
-        /* ===== КНОПКА ПОДЕЛИТЬСЯ В КОНТАКТАХ ===== */
+        /* ===== КНОПКА ПОДЕЛИТЬСЯ ===== */
         .share-contact-btn {
             display: inline-flex;
             align-items: center;
@@ -812,124 +813,154 @@
         }
 
         /* ============================================================ */
-        /* ===== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (ОСНОВНЫЕ УВЕЛИЧЕНИЯ) ===== */
+        /* ===== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (УВЕЛИЧЕННЫЕ КНОПКИ) ===== */
         @media (max-width: 600px) {
             :root {
-                --tap-size: 52px;
-                --btn-min-height: 56px;
+                --tap-size: 56px;
+                --btn-min-height: 60px;
             }
 
+            /* ===== ВКЛАДКИ РАЗДЕЛОВ — КРУПНЫЕ ===== */
+            .section-tabs {
+                gap: 10px;
+                margin: 20px 0 24px;
+            }
             .section-tab {
-                padding: 14px 20px;
-                font-size: 1rem;
-                min-height: var(--btn-min-height);
-                white-space: normal;
+                padding: 16px 24px;
+                font-size: 1.1rem;
+                min-height: 60px;
                 flex: 1 1 auto;
                 min-width: 80px;
+                border-radius: 50px;
+                white-space: normal;
+                text-align: center;
+                letter-spacing: 0.3px;
+            }
+
+            /* ===== ВКЛАДКИ МЕНЮ — КРУПНЫЕ ===== */
+            .menu-tabs {
+                gap: 10px;
+                margin-bottom: 20px;
             }
             .menu-tab {
-                padding: 12px 16px;
-                font-size: 0.95rem;
-                min-height: var(--btn-min-height);
-                white-space: normal;
+                padding: 16px 22px;
+                font-size: 1.05rem;
+                min-height: 60px;
                 flex: 1 1 auto;
-                min-width: 70px;
+                min-width: 80px;
+                border-radius: 50px;
+                white-space: normal;
+                text-align: center;
             }
+            .menu-tab .tab-icon {
+                margin-right: 8px;
+                font-size: 1.2rem;
+            }
+
+            /* ===== ОСТАЛЬНЫЕ УВЕЛИЧЕНИЯ ===== */
             .grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
             }
             .card {
                 min-height: 230px;
-                padding: 16px 12px 16px;
+                padding: 18px 14px 18px;
                 border-radius: 20px;
             }
             .card .emoji-big {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             .card h3 {
-                font-size: 1rem;
+                font-size: 1.05rem;
             }
             .card p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
             .card .price {
-                font-size: 0.95rem;
-                padding: 6px 14px;
-                min-height: 36px;
+                font-size: 1rem;
+                padding: 6px 16px;
+                min-height: 40px;
             }
             .card .card-hint {
-                font-size: 0.6rem;
+                font-size: 0.65rem;
             }
             .category-label {
-                font-size: 0.55rem;
-                padding: 3px 10px;
+                font-size: 0.6rem;
+                padding: 4px 12px;
             }
+
             .btn {
-                min-height: var(--btn-min-height);
-                padding: 14px 28px;
-                font-size: 1rem;
+                min-height: 60px;
+                padding: 16px 32px;
+                font-size: 1.05rem;
             }
+
             .share-contact-btn {
-                min-height: var(--btn-min-height);
-                padding: 14px 24px;
-                font-size: 0.95rem;
+                min-height: 60px;
+                padding: 16px 28px;
+                font-size: 1rem;
                 width: 100%;
-                max-width: 320px;
+                max-width: 340px;
             }
+
             .gallery {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
             .gallery-item {
-                padding: 6px;
+                padding: 8px;
             }
             .gallery-item img,
             .gallery-item video {
-                height: 120px;
+                height: 130px;
             }
+
             .step {
-                flex: 1 1 120px;
-                padding: 18px 14px;
-                min-height: 120px;
+                flex: 1 1 130px;
+                padding: 20px 16px;
+                min-height: 130px;
             }
             .step .num {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .step h3 {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
             .step p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
+
             .section-title {
-                font-size: 1.3rem;
-                padding-left: 12px;
+                font-size: 1.4rem;
+                padding-left: 14px;
             }
+
             .contact-block {
-                padding: 20px 16px;
+                padding: 22px 18px;
             }
             .contact-block p {
-                font-size: 0.95rem;
-                gap: 8px;
+                font-size: 1rem;
+                gap: 10px;
             }
             .contact-block .icon {
-                width: 30px;
-                font-size: 1.2rem;
+                width: 34px;
+                font-size: 1.3rem;
             }
+
             .socials a {
                 min-width: var(--tap-size);
                 min-height: var(--tap-size);
             }
             .socials a svg {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
             }
+
             .modal {
-                padding: 20px 16px 24px;
+                padding: 24px 18px 28px;
             }
             .modal .modal-row {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -937,39 +968,32 @@
                 text-align: center;
             }
             .modal .modal-btn {
-                min-height: var(--btn-min-height);
-                font-size: 1rem;
+                min-height: 60px;
+                font-size: 1.05rem;
             }
             .modal-close {
-                min-width: 48px;
-                min-height: 48px;
-                font-size: 1.8rem;
+                min-width: 52px;
+                min-height: 52px;
+                font-size: 2rem;
             }
+
             header .header-telegram {
                 min-width: var(--tap-size);
                 min-height: var(--tap-size);
             }
             header .header-telegram svg {
-                width: 48px;
-                height: 48px;
+                width: 52px;
+                height: 52px;
             }
             header h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             header .deco-icon {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             header .header-sub {
-                font-size: 0.95rem;
-                padding: 6px 16px;
-            }
-            .section-tabs {
-                gap: 8px;
-                margin: 20px 0 24px;
-            }
-            .menu-tabs {
-                gap: 6px;
-                margin-bottom: 20px;
+                font-size: 1rem;
+                padding: 8px 18px;
             }
         }
 
@@ -984,49 +1008,56 @@
             }
             .gallery-item img,
             .gallery-item video {
-                height: 100px;
+                height: 110px;
             }
             .card {
-                min-height: 200px;
+                min-height: 210px;
             }
             .card .emoji-big {
-                font-size: 2.4rem;
+                font-size: 2.6rem;
             }
+
             .section-tab {
-                font-size: 0.85rem;
-                padding: 10px 14px;
+                font-size: 0.95rem;
+                padding: 14px 16px;
+                min-height: 54px;
                 min-width: 60px;
             }
             .menu-tab {
-                font-size: 0.8rem;
-                padding: 10px 12px;
+                font-size: 0.9rem;
+                padding: 14px 14px;
+                min-height: 54px;
                 min-width: 60px;
             }
+
             .step {
                 flex: 1 1 100px;
-                padding: 14px 10px;
-                min-height: 100px;
+                padding: 16px 12px;
+                min-height: 110px;
             }
             .step .num {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             .step h3 {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
             .step p {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
+
             .btn {
-                font-size: 0.9rem;
-                padding: 12px 20px;
+                font-size: 0.95rem;
+                padding: 14px 24px;
+                min-height: 54px;
             }
             .share-contact-btn {
-                font-size: 0.85rem;
-                padding: 12px 16px;
+                font-size: 0.9rem;
+                padding: 14px 20px;
+                min-height: 54px;
             }
         }
 
-        /* ===== ПК И БОЛЬШИЕ ЭКРАНЫ ===== */
+        /* ===== ПК ===== */
         @media (min-width: 1200px) {
             .container {
                 padding: 0 40px;
