@@ -34,6 +34,7 @@
         html {
             scroll-behavior: smooth;
             -webkit-text-size-adjust: 100%;
+            height: 100%;
         }
 
         body {
@@ -42,15 +43,18 @@
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
+            min-height: 100dvh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 clamp(12px, 3vw, 40px);
             width: 100%;
         }
 
@@ -95,11 +99,12 @@
         /* ===== HEADER ===== */
         header {
             background: linear-gradient(145deg, #fce4d6, #f5c8b0);
-            padding: 50px 0 36px;
+            padding: clamp(32px, 6vw, 50px) 0 clamp(24px, 4vw, 36px);
             text-align: center;
             border-bottom: 4px solid var(--accent);
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
         header::before {
             content: '';
@@ -116,26 +121,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: clamp(10px, 2vw, 18px);
             flex-wrap: wrap;
             position: relative;
             z-index: 1;
         }
         header h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #3d2317;
         }
         header h1 span {
             background: rgba(255, 255, 255, 0.35);
-            padding: 0 16px;
+            padding: 0 clamp(10px, 2vw, 16px);
             border-radius: 60px;
             display: inline-block;
             backdrop-filter: blur(4px);
         }
         header .deco-icon {
-            font-size: 2.4rem;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
             display: inline-block;
             animation: floatSoft 3s ease-in-out infinite;
         }
@@ -151,8 +156,8 @@
             transform: scale(1.10) rotate(-4deg);
         }
         header .header-telegram svg {
-            width: 52px;
-            height: 52px;
+            width: clamp(40px, 7vw, 52px);
+            height: clamp(40px, 7vw, 52px);
             display: block;
             border-radius: 50%;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -162,12 +167,12 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         }
         header .header-sub {
-            font-size: 1.15rem;
+            font-size: clamp(0.9rem, 2vw, 1.15rem);
             color: #4f3222;
-            margin-top: 10px;
+            margin-top: 8px;
             background: rgba(255, 255, 255, 0.4);
             display: inline-block;
-            padding: 6px 28px;
+            padding: 4px clamp(16px, 3vw, 28px);
             border-radius: 60px;
             backdrop-filter: blur(4px);
             position: relative;
@@ -178,23 +183,26 @@
         .section-tabs {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 30px 0 36px;
+            gap: clamp(6px, 1.5vw, 12px);
+            margin: clamp(20px, 4vw, 32px) 0 clamp(24px, 4vw, 36px);
             flex-wrap: wrap;
+            flex-shrink: 0;
         }
         .section-tab {
-            padding: 10px 24px;
+            padding: clamp(6px, 1.2vw, 12px) clamp(14px, 2.5vw, 28px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(4px);
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: clamp(0.75rem, 1.2vw, 0.95rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
             font-family: inherit;
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            text-align: center;
+            white-space: nowrap;
         }
         .section-tab:hover {
             transform: translateY(-3px);
@@ -211,6 +219,7 @@
         /* ===== КОНТЕНТ РАЗДЕЛОВ ===== */
         .section-content {
             display: none;
+            flex: 1;
         }
         .section-content.active {
             display: block;
@@ -221,21 +230,22 @@
         .menu-tabs {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-bottom: 32px;
+            gap: clamp(4px, 1vw, 10px);
+            margin-bottom: clamp(20px, 4vw, 32px);
             flex-wrap: wrap;
         }
         .menu-tab {
-            padding: 8px 20px;
+            padding: clamp(4px, 1vw, 8px) clamp(12px, 2vw, 22px);
             border: 2px solid var(--border);
             border-radius: 60px;
             background: rgba(255, 255, 255, 0.6);
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s var(--transition);
             font-family: inherit;
+            white-space: nowrap;
         }
         .menu-tab:hover {
             transform: translateY(-2px);
@@ -249,7 +259,7 @@
             box-shadow: 0 4px 20px var(--accent-glow);
         }
         .menu-tab .tab-icon {
-            margin-right: 6px;
+            margin-right: 4px;
         }
 
         .menu-content {
@@ -262,25 +272,25 @@
 
         /* ===== ЗАГОЛОВКИ ===== */
         .section-title {
-            font-size: 2rem;
+            font-size: clamp(1.4rem, 4vw, 2rem);
             font-weight: 300;
-            margin-bottom: 28px;
+            margin-bottom: clamp(20px, 4vw, 28px);
             color: #3d2317;
-            border-left: 6px solid var(--accent);
-            padding-left: 18px;
-            letter-spacing: 1px;
+            border-left: clamp(4px, 0.6vw, 6px) solid var(--accent);
+            padding-left: clamp(12px, 2vw, 18px);
+            letter-spacing: 0.5px;
         }
 
         /* ===== КАРТОЧКИ ===== */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 22vw, 240px), 1fr));
+            gap: clamp(14px, 2.5vw, 24px);
         }
         .card {
             background: var(--card);
-            border-radius: var(--radius);
-            padding: 24px 18px 22px;
+            border-radius: clamp(18px, 2.5vw, var(--radius));
+            padding: clamp(16px, 2.5vw, 26px) clamp(12px, 2vw, 20px) clamp(14px, 2vw, 22px);
             box-shadow: var(--shadow);
             text-align: center;
             border: 1px solid var(--border);
@@ -292,6 +302,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            min-height: clamp(240px, 35vh, 340px);
         }
         .card::before {
             content: '';
@@ -310,14 +321,14 @@
             opacity: 1;
         }
         .card:hover {
-            transform: translateY(-10px) scale(1.01);
+            transform: translateY(-8px) scale(1.01);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
         .card .emoji-big {
-            font-size: 4rem;
+            font-size: clamp(2.6rem, 6vw, 4rem);
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.2;
             transition: transform 0.4s var(--transition);
         }
@@ -325,24 +336,24 @@
             transform: scale(1.12) rotate(-4deg);
         }
         .card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 6px;
+            font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+            margin-bottom: 4px;
             color: #4a2c1a;
             font-weight: 600;
         }
         .card p {
             color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+            margin-bottom: 8px;
             flex-grow: 1;
         }
         .card .price {
             color: #a7613e;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
             background: #fcf1ea;
             display: inline-block;
-            padding: 4px 18px;
+            padding: 3px clamp(12px, 2vw, 18px);
             border-radius: 60px;
             margin-top: auto;
             transition: all 0.3s;
@@ -355,19 +366,19 @@
             display: inline-block;
             background: var(--accent);
             color: #2e1d12;
-            font-size: 0.65rem;
+            font-size: clamp(0.55rem, 0.7vw, 0.65rem);
             font-weight: 700;
-            padding: 2px 14px;
+            padding: 2px clamp(10px, 1.5vw, 14px);
             border-radius: 60px;
-            margin-top: 8px;
+            margin-top: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .card .card-hint {
-            font-size: 0.7rem;
+            font-size: clamp(0.6rem, 0.7vw, 0.7rem);
             color: var(--text-light);
             opacity: 0.5;
-            margin-top: 8px;
+            margin-top: 6px;
             letter-spacing: 0.5px;
         }
 
@@ -393,22 +404,23 @@
         }
         .modal {
             background: var(--card);
-            border-radius: var(--radius);
+            border-radius: clamp(20px, 3vw, var(--radius));
             max-width: 460px;
             width: 100%;
-            padding: 36px 32px 32px;
+            padding: clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px);
             box-shadow: 0 32px 80px rgba(0, 0, 0, 0.2);
             position: relative;
             animation: modalIn 0.35s ease forwards;
             border: 1px solid var(--border);
+            margin: 0 12px;
         }
         .modal-close {
             position: absolute;
-            top: 14px;
-            right: 18px;
+            top: clamp(10px, 1.5vw, 14px);
+            right: clamp(14px, 2vw, 18px);
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
             cursor: pointer;
             color: var(--text-light);
             transition: transform 0.2s, color 0.2s;
@@ -420,52 +432,55 @@
             color: var(--text);
         }
         .modal .modal-emoji {
-            font-size: 3.6rem;
+            font-size: clamp(2.8rem, 6vw, 3.6rem);
             display: block;
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .modal h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             font-weight: 600;
             text-align: center;
             color: #4a2c1a;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .modal .modal-category {
             display: block;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: clamp(0.7rem, 1vw, 0.8rem);
             color: var(--text-light);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         .modal .modal-divider {
             height: 1px;
             background: var(--border);
-            margin: 16px 0;
+            margin: clamp(10px, 1.5vw, 16px) 0;
         }
         .modal .modal-row {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
-            font-size: 0.95rem;
+            padding: 4px 0;
+            font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+            gap: 8px;
         }
         .modal .modal-row .label {
             color: var(--text-light);
+            flex-shrink: 0;
         }
         .modal .modal-row .value {
             font-weight: 600;
             color: var(--text);
+            text-align: right;
         }
         .modal .modal-price {
             text-align: center;
-            margin-top: 16px;
-            font-size: 1.3rem;
+            margin-top: 12px;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             font-weight: 700;
             color: #a7613e;
             background: #fcf1ea;
             display: inline-block;
-            padding: 6px 28px;
+            padding: 4px clamp(20px, 3vw, 28px);
             border-radius: 60px;
             margin-left: auto;
             margin-right: auto;
@@ -474,13 +489,13 @@
         .modal .modal-btn {
             display: block;
             width: 100%;
-            margin-top: 18px;
-            padding: 14px;
+            margin-top: 16px;
+            padding: clamp(12px, 1.5vw, 14px);
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
             color: #2e1d12;
             border: none;
             border-radius: 60px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s var(--transition);
@@ -498,11 +513,11 @@
             display: inline-block;
             background: linear-gradient(145deg, var(--accent), var(--accent-dark));
             color: #2e1d12;
-            padding: 16px 44px;
+            padding: clamp(14px, 2vw, 16px) clamp(28px, 5vw, 44px);
             border-radius: 60px;
             font-weight: 700;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
             transition: all 0.3s var(--transition);
             box-shadow: 0 6px 24px var(--accent-glow);
             border: none;
@@ -536,30 +551,30 @@
         /* ===== ГАЛЕРЕЯ ===== */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(130px, 18vw, 180px), 1fr));
+            gap: clamp(12px, 1.8vw, 18px);
         }
         .gallery-item {
             background: var(--card);
-            border-radius: 20px;
-            padding: 10px;
+            border-radius: clamp(16px, 2vw, 20px);
+            padding: clamp(6px, 1vw, 10px);
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.4s var(--transition);
         }
         .gallery-item:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-6px) scale(1.02);
             box-shadow: var(--shadow-hover);
             border-color: var(--accent);
         }
         .gallery-item img,
         .gallery-item video {
             width: 100%;
-            height: 170px;
+            height: clamp(120px, 18vw, 170px);
             object-fit: cover;
             object-position: center;
-            border-radius: 14px;
+            border-radius: clamp(10px, 1.5vw, 14px);
             display: block;
             background: #f0e8e0;
             transition: transform 0.5s var(--transition);
@@ -573,14 +588,14 @@
         .steps {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: clamp(12px, 2vw, 20px);
             justify-content: center;
         }
         .step {
-            flex: 1 1 170px;
+            flex: 1 1 clamp(140px, 20vw, 200px);
             background: var(--bg-soft);
-            padding: 24px 18px;
-            border-radius: 36px;
+            padding: clamp(16px, 2.5vw, 24px) clamp(14px, 2vw, 18px);
+            border-radius: clamp(28px, 3.5vw, 36px);
             text-align: center;
             border: 2px solid transparent;
             transition: all 0.3s var(--transition);
@@ -591,27 +606,27 @@
             box-shadow: 0 8px 28px var(--accent-glow);
         }
         .step .num {
-            font-size: 2.6rem;
+            font-size: clamp(2rem, 4vw, 2.6rem);
             font-weight: 300;
             color: var(--accent);
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .step h3 {
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 1.3vw, 1.05rem);
             color: #4a2c1a;
             font-weight: 600;
         }
         .step p {
             color: var(--text-light);
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 1vw, 0.85rem);
         }
 
         /* ===== КОНТАКТЫ ===== */
         .contact-block {
             background: linear-gradient(145deg, #fcf3ec, #f8ede6);
-            padding: 36px 28px;
-            border-radius: 48px;
+            padding: clamp(24px, 4vw, 36px) clamp(18px, 3vw, 28px);
+            border-radius: clamp(32px, 4vw, 48px);
             text-align: center;
             max-width: 620px;
             margin: 0 auto;
@@ -623,26 +638,26 @@
             box-shadow: var(--shadow-hover);
         }
         .contact-block p {
-            font-size: 1.1rem;
-            margin: 10px 0;
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            margin: clamp(6px, 1vw, 10px) 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: clamp(6px, 1vw, 10px);
             flex-wrap: wrap;
         }
         .contact-block .icon {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
             display: inline-block;
-            width: 36px;
+            width: clamp(28px, 3vw, 36px);
             flex-shrink: 0;
         }
 
         .socials {
-            margin-top: 20px;
+            margin-top: clamp(14px, 2vw, 20px);
             display: flex;
             justify-content: center;
-            gap: 18px;
+            gap: clamp(12px, 2vw, 18px);
             flex-wrap: wrap;
         }
         .socials a {
@@ -657,8 +672,8 @@
             transform: scale(1.14) rotate(-4deg);
         }
         .socials a svg {
-            width: 38px;
-            height: 38px;
+            width: clamp(30px, 4vw, 38px);
+            height: clamp(30px, 4vw, 38px);
             display: block;
             border-radius: 50%;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -673,9 +688,11 @@
             background: #3e2c1b;
             color: #e6d4c6;
             text-align: center;
-            padding: 28px 0;
-            font-size: 0.9rem;
+            padding: clamp(20px, 3vw, 28px) 0;
+            font-size: clamp(0.7rem, 1vw, 0.9rem);
             letter-spacing: 0.5px;
+            margin-top: auto;
+            flex-shrink: 0;
         }
         footer .footer-heart {
             display: inline-block;
@@ -686,75 +703,62 @@
         /* ============================================================ */
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            header .header-telegram svg { width: 44px; height: 44px; }
-            .section-tab { font-size: 0.85rem; padding: 8px 16px; }
-            .menu-tab { font-size: 0.8rem; padding: 6px 14px; }
-            .section-title { font-size: 1.6rem; padding-left: 14px; }
-            .grid { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; }
-            .card { padding: 18px 12px 16px; }
-            .card .emoji-big { font-size: 3.2rem; }
-            .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
-            .gallery-item img,
-            .gallery-item video { height: 140px; }
-            .step { flex: 1 1 150px; padding: 18px 14px; }
-            .contact-block { padding: 24px 18px; }
-            .contact-block p { font-size: 1rem; }
-            .socials a svg { width: 34px; height: 34px; }
-            .modal { padding: 28px 20px 24px; }
-            .modal .modal-emoji { font-size: 2.8rem; }
-            .modal h3 { font-size: 1.3rem; }
+            .section-tab { white-space: normal; }
+            .menu-tab { white-space: normal; }
+            .grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
         }
 
         @media (max-width: 480px) {
-            header h1 { font-size: 1.7rem; }
-            header .header-sub { font-size: 0.9rem; padding: 4px 16px; }
-            header .header-telegram svg { width: 38px; height: 38px; }
-            header .deco-icon { font-size: 1.8rem; }
-            .section-tab { font-size: 0.75rem; padding: 6px 12px; }
-            .menu-tab { font-size: 0.7rem; padding: 4px 10px; }
-            .section-title { font-size: 1.3rem; padding-left: 12px; border-left-width: 4px; }
-            .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .card { border-radius: 20px; padding: 14px 10px 14px; }
-            .card .emoji-big { font-size: 2.6rem; }
-            .card h3 { font-size: 0.95rem; }
-            .card p { font-size: 0.78rem; }
-            .card .price { font-size: 0.9rem; padding: 2px 12px; }
-            .gallery { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .gallery-item { padding: 6px; border-radius: 14px; }
+            .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .card { min-height: 200px; padding: 12px 8px 12px; }
+            .card .emoji-big { font-size: 2.2rem; }
+            .card h3 { font-size: 0.85rem; }
+            .card p { font-size: 0.7rem; }
+            .card .price { font-size: 0.8rem; padding: 2px 10px; }
+            .card .card-hint { font-size: 0.55rem; }
+            .category-label { font-size: 0.5rem; padding: 1px 8px; }
+            .gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .gallery-item { padding: 4px; }
             .gallery-item img,
-            .gallery-item video { height: 110px; border-radius: 10px; }
-            .btn { padding: 12px 24px; font-size: 0.9rem; }
-            .steps { gap: 12px; }
-            .step { flex: 1 1 100px; padding: 14px 10px; border-radius: 24px; }
-            .step .num { font-size: 1.8rem; }
-            .step h3 { font-size: 0.85rem; }
-            .step p { font-size: 0.75rem; }
-            .contact-block { padding: 18px 14px; border-radius: 28px; }
-            .contact-block p { font-size: 0.85rem; margin: 6px 0; }
-            .contact-block .icon { width: 28px; font-size: 1.2rem; }
-            .socials a svg { width: 30px; height: 30px; }
-            footer { font-size: 0.7rem; padding: 16px 0; }
-            .modal { padding: 20px 16px 20px; border-radius: 20px; }
-            .modal .modal-emoji { font-size: 2.4rem; }
-            .modal h3 { font-size: 1.1rem; }
-            .modal .modal-row { font-size: 0.85rem; padding: 4px 0; }
-            .modal .modal-price { font-size: 1.1rem; padding: 4px 20px; }
-            .modal .modal-btn { font-size: 0.9rem; padding: 12px; }
-            .modal-close { font-size: 1.5rem; top: 10px; right: 14px; }
+            .gallery-item video { height: 100px; }
+            .step { flex: 1 1 100px; padding: 12px 8px; }
+            .step .num { font-size: 1.6rem; }
+            .step h3 { font-size: 0.8rem; }
+            .step p { font-size: 0.7rem; }
+            .modal { margin: 0 8px; padding: 16px 14px 18px; }
+            .modal .modal-row { font-size: 0.8rem; flex-wrap: wrap; justify-content: center; }
+            .modal .modal-row .value { text-align: center; }
+            .section-tab { font-size: 0.7rem; padding: 4px 10px; }
+            .menu-tab { font-size: 0.65rem; padding: 3px 8px; }
+            .section-title { font-size: 1.1rem; padding-left: 10px; border-left-width: 3px; }
+            header h1 { font-size: 1.5rem; }
+            header .deco-icon { font-size: 1.5rem; }
+            header .header-telegram svg { width: 34px; height: 34px; }
+            header .header-sub { font-size: 0.8rem; padding: 2px 12px; }
+            .contact-block { padding: 14px 12px; }
+            .contact-block p { font-size: 0.8rem; margin: 4px 0; }
+            .contact-block .icon { width: 24px; font-size: 1rem; }
+            .socials a svg { width: 28px; height: 28px; }
+            .btn { padding: 10px 20px; font-size: 0.85rem; }
+            footer { font-size: 0.65rem; padding: 14px 0; }
         }
 
-        @media (max-width: 360px) {
-            .grid { grid-template-columns: 1fr; gap: 12px; }
-            .gallery { grid-template-columns: 1fr; gap: 12px; }
-            .section-tab { font-size: 0.7rem; padding: 4px 10px; }
-            .menu-tab { font-size: 0.65rem; padding: 4px 8px; }
+        @media (max-width: 380px) {
+            .grid { grid-template-columns: 1fr; gap: 10px; }
+            .gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .section-tab { font-size: 0.6rem; padding: 3px 8px; }
+            .menu-tab { font-size: 0.6rem; padding: 3px 6px; }
+            .card { min-height: 180px; }
+            .card .emoji-big { font-size: 2rem; }
+            .gallery-item img,
+            .gallery-item video { height: 80px; }
         }
 
         @media (min-width: 1200px) {
             .container { padding: 0 40px; }
             .gallery { grid-template-columns: repeat(3, 1fr); }
-            .grid { grid-template-columns: repeat(4, 1fr); }
+            .grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+            .card { min-height: 340px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -772,6 +776,7 @@
             .socials { display: none; }
             header::before { display: none; }
             .modal-overlay { display: none !important; }
+            footer { margin-top: 0; }
         }
     </style>
 </head>
@@ -813,7 +818,7 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: МЕНЮ ===== -->
 <div class="section-content active" id="section-menu">
-    <section class="container" style="padding: 0 0 48px;">
+    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
         <h2 class="section-title">🍩 Наше меню</h2>
 
         <div class="menu-tabs" role="tablist">
@@ -822,126 +827,126 @@
             <button class="menu-tab" data-menu="desserts" role="tab"><span class="tab-icon">🧁</span> Десерты</button>
         </div>
 
-<!-- Торты -->
-<div class="menu-content active" id="menu-cakes">
-    <div class="grid">
-        <div class="card animate-on-scroll" data-name="Сникерс" data-emoji="🍫" data-category="Торт" data-price="от 2500 ₽" data-composition="Шоколадный бисквит, карамельный крем, арахис, шоколадный ганаш" data-calories="~420 ккал/100г">
-            <span class="emoji-big">🍫</span>
-            <h3>Сникерс</h3>
-            <p>Шоколадный бисквит с карамелью и арахисом</p>
-            <div class="price">от 2500 ₽</div>
-            <span class="category-label">Торт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
+        <!-- Торты -->
+        <div class="menu-content active" id="menu-cakes">
+            <div class="grid">
+                <div class="card animate-on-scroll" data-name="Сникерс" data-emoji="🍫" data-category="Торт" data-price="от 2500 ₽" data-composition="Шоколадный бисквит, карамельный крем, арахис, шоколадный ганаш" data-calories="~420 ккал/100г">
+                    <span class="emoji-big">🍫</span>
+                    <h3>Сникерс</h3>
+                    <p>Шоколадный бисквит с карамелью и арахисом</p>
+                    <div class="price">от 2500 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Малиновый" data-emoji="🍇" data-category="Торт" data-price="от 2700 ₽" data-composition="Ванильный бисквит, малиновый крем-чиз, свежая малина, белый шоколад" data-calories="~380 ккал/100г">
+                    <span class="emoji-big">🍇</span>
+                    <h3>Малиновый</h3>
+                    <p>Нежный бисквит с малиновым кремом</p>
+                    <div class="price">от 2700 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Клубничный" data-emoji="🍓" data-category="Торт" data-price="3000 ₽" data-composition="Ванильный бисквит, клубничный крем-чиз, свежая клубника, сливочный мусс" data-calories="~360 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Клубничный</h3>
+                    <p>Свежий клубничный вкус с лёгким кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Мятный" data-emoji="🌿" data-category="Торт" data-price="от 2600 ₽" data-composition="Шоколадный бисквит, мятный крем, шоколадный ганаш, свежая мята" data-calories="~400 ккал/100г">
+                    <span class="emoji-big">🌿</span>
+                    <h3>Мятный</h3>
+                    <p>Освежающий мятный бисквит с шоколадом</p>
+                    <div class="price">от 2600 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Молочная девочка" data-emoji="🥛" data-category="Торт" data-price="от 3000 ₽" data-composition="Нежные бисквитные коржи, заварной крем, молочная прослойка" data-calories="~350 ккал/100г">
+                    <span class="emoji-big">🥛</span>
+                    <h3>Молочная девочка</h3>
+                    <p>Нежные коржи с заварным кремом</p>
+                    <div class="price">от 3000 ₽</div>
+                    <span class="category-label">Торт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+            </div>
         </div>
-        <div class="card animate-on-scroll" data-name="Малиновый" data-emoji="🍇" data-category="Торт" data-price="от 2700 ₽" data-composition="Ванильный бисквит, малиновый крем-чиз, свежая малина, белый шоколад" data-calories="~380 ккал/100г">
-            <span class="emoji-big">🍇</span>
-            <h3>Малиновый</h3>
-            <p>Нежный бисквит с малиновым кремом</p>
-            <div class="price">от 2700 ₽</div>
-            <span class="category-label">Торт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Клубничный" data-emoji="🍓" data-category="Торт" data-price="3000 ₽" data-composition="Ванильный бисквит, клубничный крем-чиз, свежая клубника, сливочный мусс" data-calories="~360 ккал/100г">
-            <span class="emoji-big">🍓</span>
-            <h3>Клубничный</h3>
-            <p>Свежий клубничный вкус с лёгким кремом</p>
-            <div class="price">3000 ₽</div>
-            <span class="category-label">Торт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Мятный" data-emoji="🌿" data-category="Торт" data-price="от 2600 ₽" data-composition="Шоколадный бисквит, мятный крем, шоколадный ганаш, свежая мята" data-calories="~400 ккал/100г">
-            <span class="emoji-big">🌿</span>
-            <h3>Мятный</h3>
-            <p>Освежающий мятный бисквит с шоколадом</p>
-            <div class="price">от 2600 ₽</div>
-            <span class="category-label">Торт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Молочная девочка" data-emoji="🥛" data-category="Торт" data-price="от 3000 ₽" data-composition="Нежные бисквитные коржи, заварной крем, молочная прослойка" data-calories="~350 ккал/100г">
-            <span class="emoji-big">🥛</span>
-            <h3>Молочная девочка</h3>
-            <p>Нежные коржи с заварным кремом</p>
-            <div class="price">от 3000 ₽</div>
-            <span class="category-label">Торт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-    </div>
-</div>
 
-<!-- Рулеты -->
-<div class="menu-content" id="menu-rolls">
-    <div class="grid">
-        <div class="card animate-on-scroll" data-name="Меренговый с малиной и фисташкой" data-emoji="🍇🟢" data-category="Рулет" data-price="3500 ₽" data-composition="Хрустящая меренга, малиново-фисташковый крем, свежая малина, фисташка" data-calories="~390 ккал/100г">
-            <span class="emoji-big">🍇🟢</span>
-            <h3>Меренговый с малиной и фисташкой</h3>
-            <p>Хрустящая меренга с малиново-фисташковым кремом</p>
-            <div class="price">3500 ₽</div>
-            <span class="category-label">Рулет</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
+        <!-- Рулеты -->
+        <div class="menu-content" id="menu-rolls">
+            <div class="grid">
+                <div class="card animate-on-scroll" data-name="Меренговый с малиной и фисташкой" data-emoji="🍇🟢" data-category="Рулет" data-price="3500 ₽" data-composition="Хрустящая меренга, малиново-фисташковый крем, свежая малина, фисташка" data-calories="~390 ккал/100г">
+                    <span class="emoji-big">🍇🟢</span>
+                    <h3>Меренговый с малиной и фисташкой</h3>
+                    <p>Хрустящая меренга с малиново-фисташковым кремом</p>
+                    <div class="price">3500 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с клубникой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Нежная меренга, клубничный крем-чиз, свежая клубника" data-calories="~370 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Меренговый с клубникой</h3>
+                    <p>Нежная меренга с клубничным кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с клубникой и голубикой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Хрустящая меренга, ягодный крем-чиз, клубника, голубика" data-calories="~380 ккал/100г">
+                    <span class="emoji-big">🍓</span>
+                    <h3>Меренговый с клубникой и голубикой</h3>
+                    <p>Хрустящая меренга с ягодным кремом</p>
+                    <div class="price">3000 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Меренговый с мандарином" data-emoji="🍊" data-category="Рулет" data-price="2500 ₽" data-composition="Цитрусовая меренга, мандариновый крем, цедра мандарина" data-calories="~360 ккал/100г">
+                    <span class="emoji-big">🍊</span>
+                    <h3>Меренговый с мандарином</h3>
+                    <p>Цитрусовая меренга с мандариновым кремом</p>
+                    <div class="price">2500 ₽</div>
+                    <span class="category-label">Рулет</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+            </div>
         </div>
-        <div class="card animate-on-scroll" data-name="Меренговый с клубникой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Нежная меренга, клубничный крем-чиз, свежая клубника" data-calories="~370 ккал/100г">
-            <span class="emoji-big">🍓</span>
-            <h3>Меренговый с клубникой</h3>
-            <p>Нежная меренга с клубничным кремом</p>
-            <div class="price">3000 ₽</div>
-            <span class="category-label">Рулет</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Меренговый с клубникой и голубикой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Хрустящая меренга, ягодный крем-чиз, клубника, голубика" data-calories="~380 ккал/100г">
-            <span class="emoji-big">🍓</span>
-            <h3>Меренговый с клубникой и голубикой</h3>
-            <p>Хрустящая меренга с ягодным кремом</p>
-            <div class="price">3000 ₽</div>
-            <span class="category-label">Рулет</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Меренговый с мандарином" data-emoji="🍊" data-category="Рулет" data-price="2500 ₽" data-composition="Цитрусовая меренга, мандариновый крем, цедра мандарина" data-calories="~360 ккал/100г">
-            <span class="emoji-big">🍊</span>
-            <h3>Меренговый с мандарином</h3>
-            <p>Цитрусовая меренга с мандариновым кремом</p>
-            <div class="price">2500 ₽</div>
-            <span class="category-label">Рулет</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-    </div>
-</div>
 
-<!-- Десерты -->
-<div class="menu-content" id="menu-desserts">
-    <div class="grid">
-        <div class="card animate-on-scroll" data-name="Пирожное «Картошка»" data-emoji="🥔" data-category="Десерт" data-price="от 800 ₽ / от 4 шт" data-composition="Бисквитная крошка, масляный крем с какао, грецкий орех, шоколадная глазурь" data-calories="~450 ккал/100г">
-            <span class="emoji-big">🥔</span>
-            <h3>Пирожное «Картошка»</h3>
-            <p>Из бисквитной крошки с масляным кремом</p>
-            <div class="price">от 800 ₽ / от 4 шт</div>
-            <span class="category-label">Десерт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
+        <!-- Десерты -->
+        <div class="menu-content" id="menu-desserts">
+            <div class="grid">
+                <div class="card animate-on-scroll" data-name="Пирожное «Картошка»" data-emoji="🥔" data-category="Десерт" data-price="от 800 ₽ / от 4 шт" data-composition="Бисквитная крошка, масляный крем с какао, грецкий орех, шоколадная глазурь" data-calories="~450 ккал/100г">
+                    <span class="emoji-big">🥔</span>
+                    <h3>Пирожное «Картошка»</h3>
+                    <p>Из бисквитной крошки с масляным кремом</p>
+                    <div class="price">от 800 ₽ / от 4 шт</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Вафельные трубочки" data-emoji="🥞" data-category="Десерт" data-price="от 450 ₽ / от 3 шт" data-composition="Хрустящие вафли, варёная сгущёнка, шоколадная крошка, карамель" data-calories="~420 ккал/100г">
+                    <span class="emoji-big">🥞</span>
+                    <h3>Вафельные трубочки</h3>
+                    <p>Хрустящие вафли с варёной сгущёнкой</p>
+                    <div class="price">от 450 ₽ / от 3 шт</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+                <div class="card animate-on-scroll" data-name="Трайфлы" data-emoji="🍰" data-category="Десерт" data-price="от 500 ₽" data-composition="Бисквит, ванильный крем, свежие ягоды, карамельный соус" data-calories="~340 ккал/100г">
+                    <span class="emoji-big">🍰</span>
+                    <h3>Трайфлы</h3>
+                    <p>Слоёный десерт с кремом и ягодами</p>
+                    <div class="price">от 500 ₽</div>
+                    <span class="category-label">Десерт</span>
+                    <span class="card-hint">👆 Нажмите для деталей</span>
+                </div>
+            </div>
         </div>
-        <div class="card animate-on-scroll" data-name="Вафельные трубочки" data-emoji="🥞" data-category="Десерт" data-price="от 450 ₽ / от 3 шт" data-composition="Хрустящие вафли, варёная сгущёнка, шоколадная крошка, карамель" data-calories="~420 ккал/100г">
-            <span class="emoji-big">🥞</span>
-            <h3>Вафельные трубочки</h3>
-            <p>Хрустящие вафли с варёной сгущёнкой</p>
-            <div class="price">от 450 ₽ / от 3 шт</div>
-            <span class="category-label">Десерт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-        <div class="card animate-on-scroll" data-name="Трайфлы" data-emoji="🍰" data-category="Десерт" data-price="от 500 ₽" data-composition="Бисквит, ванильный крем, свежие ягоды, карамельный соус" data-calories="~340 ккал/100г">
-            <span class="emoji-big">🍰</span>
-            <h3>Трайфлы</h3>
-            <p>Слоёный десерт с кремом и ягодами</p>
-            <div class="price">от 500 ₽</div>
-            <span class="category-label">Десерт</span>
-            <span class="card-hint">👆 Нажмите для деталей</span>
-        </div>
-    </div>
-</div>
     </section>
 </div>
 
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: ГАЛЕРЕЯ ===== -->
 <div class="section-content" id="section-gallery">
-    <section class="container" style="padding: 0 0 48px;">
+    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
         <h2 class="section-title">📸 Примеры работ</h2>
         <div class="gallery">
             <div class="gallery-item"><img src="IMG_20260708_110810_041.jpg" alt="Торт" loading="lazy" decoding="async"></div>
@@ -964,14 +969,14 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: ЗАКАЗ ===== -->
 <div class="section-content" id="section-order">
-    <section class="container" style="padding: 0 0 48px;">
+    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
         <h2 class="section-title">📦 Как заказать</h2>
         <div class="steps">
             <div class="step"><span class="num">1</span><h3>Выберите десерт</h3><p>Из меню или свой рецепт</p></div>
             <div class="step"><span class="num">2</span><h3>Согласуйте детали</h3><p>Вес, декор, дата доставки</p></div>
             <div class="step"><span class="num">3</span><h3>Получите вкус</h3><p>Самовывоз или доставка</p></div>
         </div>
-        <div style="text-align:center; margin-top:36px;">
+        <div style="text-align:center; margin-top:clamp(28px, 5vw, 36px);">
             <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="btn btn-pulse">✨ Сделать заказ ✨</a>
         </div>
     </section>
@@ -980,7 +985,7 @@
 <!-- ============================================================ -->
 <!-- ===== РАЗДЕЛ: КОНТАКТЫ ===== -->
 <div class="section-content" id="section-contacts">
-    <section class="container" style="padding: 0 0 48px;">
+    <section class="container" style="padding: 0 0 clamp(32px, 6vw, 48px);">
         <h2 class="section-title">📬 Свяжитесь со мной</h2>
         <div class="contact-block">
             <p><span class="icon">📱</span> +7 (916) 012-47-90</p>
@@ -1072,7 +1077,6 @@
         const modalCalories = document.getElementById('modalCalories');
         const modalPrice = document.getElementById('modalPrice');
 
-        // Открытие модалки по клику на карточку
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function() {
                 modalEmoji.textContent = this.dataset.emoji || '🍰';
@@ -1086,20 +1090,15 @@
             });
         });
 
-        // Закрытие модалки
         function closeModal() {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
         modalClose.addEventListener('click', closeModal);
-
-        // Закрытие по клику вне модалки
         modal.addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
-
-        // Закрытие по Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
