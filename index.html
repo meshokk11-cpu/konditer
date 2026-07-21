@@ -13,7 +13,7 @@
 
     <meta property="og:title" content="Сладкая выпечка от Нафани — торты, рулеты, десерты">
     <meta property="og:description" content="Ручная кондитерская в Москве. Торты, рулеты, десерты на заказ. Натуральные ингредиенты, доставка.">
-    <meta property="og:image" content="https://nafanya.ru/og-image.jpg">
+    <meta property="og:image" content="https://nafanya.ru/IMG_20260708_110810_041.jpg">
     <meta property="og:url" content="https://nafanya.ru">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,11 @@
     }
     </script>
 
-    <meta name="theme-color" content="#fdf6f0">
+    <meta name="theme-color" content="#3a2418">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
     <style>
         /* ===== БАЗА ===== */
@@ -47,31 +51,34 @@
         }
 
         :root {
-            --bg: #fcf8f4;
-            --bg-soft: #f9f0ea;
-            --text: #2c1f17;
-            --text-light: #6b5544;
-            --card: #ffffff;
-            --border: #e8dbd1;
-            --accent: #dcb69b;
-            --accent-dark: #c49a7d;
-            --accent-glow: rgba(220, 182, 155, 0.25);
-            --shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 24px 56px rgba(0, 0, 0, 0.09);
-            --radius: 32px;
+            --bg: #faf3e8;
+            --bg-soft: #f3e6d4;
+            --text: #34201a;
+            --text-light: #7a5c4f;
+            --card: #fffdfa;
+            --border: #e6d2ba;
+            --accent: #a8354d;
+            --accent-dark: #832741;
+            --accent-glow: rgba(168, 53, 77, 0.18);
+            --gold: #c9a15c;
+            --gold-dark: #ad8544;
+            --shadow: 0 12px 40px rgba(58, 36, 24, 0.07);
+            --shadow-hover: 0 24px 56px rgba(58, 36, 24, 0.13);
+            --radius: 28px;
             --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-            --header-bg: linear-gradient(145deg, #f5e4d8, #efd5c6);
-            --header-text: #2c1f17;
-            --header-sub-bg: rgba(255, 255, 255, 0.5);
-            --footer-bg: #2c1f17;
-            --footer-text: #e6d4c6;
-            --modal-bg: #ffffff;
-            --modal-border: #e8dbd1;
-            --price-bg: #f8ede6;
-            --price-text: #a87b62;
+            --header-bg: linear-gradient(160deg, #3a2418, #4a2f1f 55%, #3a2418);
+            --header-text: #faf3e8;
+            --header-sub-bg: rgba(250, 243, 232, 0.12);
+            --footer-bg: #241510;
+            --footer-text: #d9c2a8;
+            --modal-bg: #fffdfa;
+            --modal-border: #e6d2ba;
+            --price-bg: #f6e9d8;
+            --price-text: #97602e;
             --card-hint-opacity: 0.5;
             --tap-size: 48px;
             --btn-min-height: 52px;
+            --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
         }
 
         html {
@@ -83,6 +90,9 @@
         body {
             font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg);
+            background-image:
+                radial-gradient(circle at 8% 12%, rgba(201, 161, 92, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 92% 78%, rgba(168, 53, 77, 0.05) 0%, transparent 50%);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
@@ -94,6 +104,7 @@
             flex-direction: column;
         }
 
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -103,8 +114,8 @@
 
         /* ===== АНИМАЦИИ ===== */
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(34px) scale(0.98); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes scaleIn {
             0% { opacity: 0; transform: scale(0.96); }
@@ -125,26 +136,34 @@
             100% { box-shadow: 0 0 0 0 rgba(220, 182, 155, 0); }
         }
         @keyframes modalIn {
-            0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+            0% { opacity: 0; transform: scale(0.9) translateY(24px); }
+            60% { opacity: 1; transform: scale(1.015) translateY(-2px); }
             100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        @keyframes shineSweep {
+            0% { transform: translateX(-120%) skewX(-15deg); }
+            100% { transform: translateX(220%) skewX(-15deg); }
+        }
+        @keyframes seedFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(4deg); }
         }
 
         .animate-on-scroll {
             opacity: 0;
-            animation: fadeUp 0.7s ease forwards;
+            transform: translateY(34px) scale(0.98);
+            transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .animate-on-scroll:nth-child(1) { animation-delay: 0.05s; }
-        .animate-on-scroll:nth-child(2) { animation-delay: 0.13s; }
-        .animate-on-scroll:nth-child(3) { animation-delay: 0.21s; }
-        .animate-on-scroll:nth-child(4) { animation-delay: 0.29s; }
-        .animate-on-scroll:nth-child(5) { animation-delay: 0.37s; }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
         /* ===== HEADER ===== */
         header {
             background: var(--header-bg);
-            padding: clamp(36px, 6vw, 56px) 0 clamp(24px, 4vw, 36px);
+            padding: clamp(40px, 7vw, 64px) 0 clamp(28px, 4vw, 40px);
             text-align: center;
-            border-bottom: 3px solid var(--accent);
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
@@ -152,47 +171,70 @@
         header::before {
             content: '';
             position: absolute;
-            top: -60%;
-            left: -30%;
-            width: 160%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.25) 0%, transparent 60%);
+            inset: 0;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(201, 161, 92, 0.10) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(168, 53, 77, 0.14) 0%, transparent 50%);
             animation: floatSoft 14s ease-in-out infinite;
             pointer-events: none;
         }
+        header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--accent) 50%, var(--gold) 80%, transparent);
+            opacity: 0.85;
+        }
         header .header-inner {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: clamp(12px, 2vw, 20px);
-            flex-wrap: wrap;
+            gap: clamp(10px, 1.5vw, 14px);
             position: relative;
             z-index: 1;
         }
+        header .brand-seal {
+            width: clamp(58px, 8vw, 72px);
+            height: clamp(58px, 8vw, 72px);
+            border-radius: 50%;
+            border: 1.5px solid rgba(201, 161, 92, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.7rem, 4vw, 2.2rem);
+            position: relative;
+            animation: floatSoft 3.6s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(201, 161, 92, 0.12), transparent 70%);
+        }
+        header .brand-seal::before {
+            content: '';
+            position: absolute;
+            inset: -7px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 161, 92, 0.28);
+        }
+        header .brand-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2vw, 18px);
+        }
         header h1 {
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 300;
-            letter-spacing: 1.5px;
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 6.5vw, 3.4rem);
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 0.5px;
             color: var(--header-text);
-        }
-        header h1 span {
-            background: var(--header-sub-bg);
-            padding: 0 clamp(14px, 2vw, 20px);
-            border-radius: 80px;
-            display: inline-block;
-            backdrop-filter: blur(6px);
-        }
-        header .deco-icon {
-            font-size: clamp(2rem, 4.5vw, 2.8rem);
-            display: inline-block;
-            animation: floatSoft 3.2s ease-in-out infinite;
         }
         header .header-telegram {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s var(--transition);
-            animation: floatSoft 3.2s ease-in-out infinite 0.5s;
             text-decoration: none;
             min-width: var(--tap-size);
             min-height: var(--tap-size);
@@ -201,29 +243,32 @@
             transform: scale(1.12) rotate(-4deg);
         }
         header .header-telegram svg {
-            width: clamp(48px, 7vw, 56px);
-            height: clamp(48px, 7vw, 56px);
+            width: clamp(42px, 6vw, 50px);
+            height: clamp(42px, 6vw, 50px);
             display: block;
             border-radius: 50%;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
             transition: box-shadow 0.3s;
         }
         header .header-telegram:hover svg {
-            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.11);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
         }
         header .header-sub {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--header-text);
-            margin-top: 10px;
-            background: var(--header-sub-bg);
-            display: inline-block;
-            padding: 8px clamp(20px, 3vw, 32px);
-            border-radius: 80px;
-            backdrop-filter: blur(6px);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: var(--gold);
+            margin-top: 2px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
             position: relative;
             z-index: 1;
-            font-weight: 400;
-            letter-spacing: 0.3px;
+        }
+        header .header-divider {
+            width: 46px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 161, 92, 0.6), transparent);
+            margin: clamp(10px, 1.5vw, 14px) 0 2px;
         }
 
         /* ===== ВКЛАДКИ РАЗДЕЛОВ (увеличены для телефона) ===== */
@@ -254,8 +299,19 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 9px;
             touch-action: manipulation;
             flex: 0 1 auto;
+        }
+        .tab-svg {
+            width: 19px;
+            height: 19px;
+            flex-shrink: 0;
+            color: var(--accent-dark);
+            transition: color 0.3s var(--transition);
+        }
+        .section-tab.active .tab-svg {
+            color: #2c1610;
         }
         .section-tab:hover {
             transform: translateY(-4px);
@@ -263,8 +319,8 @@
             box-shadow: 0 8px 24px var(--accent-glow);
         }
         .section-tab.active {
-            background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2c1f17;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
             border-color: var(--accent-dark);
             box-shadow: 0 8px 28px var(--accent-glow);
         }
@@ -304,6 +360,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             touch-action: manipulation;
             flex: 0 1 auto;
         }
@@ -313,13 +370,18 @@
             box-shadow: 0 6px 20px var(--accent-glow);
         }
         .menu-tab.active {
-            background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2c1f17;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
             border-color: var(--accent-dark);
             box-shadow: 0 6px 24px var(--accent-glow);
         }
-        .menu-tab .tab-icon {
-            margin-right: 6px;
+        .menu-tab .tab-svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-dark);
+        }
+        .menu-tab.active .tab-svg {
+            color: #2c1610;
         }
 
         .menu-content {
@@ -332,13 +394,33 @@
 
         /* ===== ЗАГОЛОВКИ ===== */
         .section-title {
-            font-size: clamp(1.6rem, 4vw, 2.2rem);
-            font-weight: 300;
-            margin-bottom: clamp(24px, 4vw, 32px);
+            font-family: var(--font-display);
+            font-size: clamp(1.7rem, 4.2vw, 2.5rem);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: clamp(28px, 4.5vw, 40px);
             color: var(--text);
-            border-left: 5px solid var(--accent);
-            padding-left: clamp(14px, 2vw, 20px);
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            position: relative;
+            padding-bottom: clamp(14px, 2vw, 18px);
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 64px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            border-radius: 3px;
+        }
+        .section-title .title-svg {
+            width: 0.78em;
+            height: 0.78em;
+            vertical-align: -0.08em;
+            margin-right: 0.28em;
+            color: var(--accent);
         }
 
         /* ===== КАРТОЧКИ ===== */
@@ -350,11 +432,11 @@
         .card {
             background: var(--card);
             border-radius: clamp(20px, 2.5vw, var(--radius));
-            padding: clamp(20px, 2.5vw, 28px) clamp(14px, 2vw, 22px) clamp(18px, 2vw, 24px);
+            padding: clamp(24px, 2.8vw, 32px) clamp(16px, 2vw, 24px) clamp(20px, 2vw, 26px);
             box-shadow: var(--shadow);
             text-align: center;
             border: 1px solid var(--border);
-            transition: all 0.4s var(--transition);
+            transition: transform 0.55s var(--transition), box-shadow 0.55s var(--transition), border-color 0.4s;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -362,8 +444,22 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            min-height: clamp(260px, 36vh, 350px);
+            min-height: clamp(270px, 36vh, 360px);
             touch-action: manipulation;
+            will-change: transform;
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(201, 161, 92, 0.16);
+            border-radius: calc(clamp(20px, 2.5vw, var(--radius)) - 8px);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s var(--transition);
+        }
+        .card:hover::after {
+            opacity: 1;
         }
         .card::before {
             content: '';
@@ -372,7 +468,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent), #f0d0bf, var(--accent));
+            background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
             background-size: 200% 100%;
             animation: shimmer 4s linear infinite;
             opacity: 0;
@@ -382,22 +478,51 @@
             opacity: 1;
         }
         .card:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px -12px rgba(58, 36, 24, 0.22), 0 8px 24px rgba(168, 53, 77, 0.1);
             border-color: var(--accent);
         }
+        .card .emoji-stage {
+            width: clamp(70px, 11vw, 92px);
+            height: clamp(70px, 11vw, 92px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, var(--bg-soft), transparent 72%);
+            margin-bottom: 6px;
+            position: relative;
+            transition: transform 0.55s var(--transition);
+        }
+        .card .emoji-stage::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px dashed rgba(201, 161, 92, 0.35);
+            transform: scale(0.88);
+            opacity: 0;
+            transition: all 0.5s var(--transition);
+        }
+        .card:hover .emoji-stage {
+            transform: scale(1.06);
+        }
+        .card:hover .emoji-stage::before {
+            transform: scale(1);
+            opacity: 1;
+        }
         .card .emoji-big {
-            font-size: clamp(3rem, 6vw, 4.2rem);
+            font-size: clamp(2.6rem, 5.2vw, 3.6rem);
             display: block;
-            margin-bottom: 8px;
-            line-height: 1.2;
-            transition: transform 0.4s var(--transition);
+            line-height: 1;
+            transition: transform 0.5s var(--transition);
         }
         .card:hover .emoji-big {
-            transform: scale(1.12) rotate(-4deg);
+            transform: scale(1.1) rotate(-5deg);
         }
         .card h3 {
-            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 1.7vw, 1.3rem);
             margin-bottom: 4px;
             color: var(--text);
             font-weight: 600;
@@ -417,16 +542,18 @@
             padding: 6px clamp(16px, 2vw, 22px);
             border-radius: 60px;
             margin-top: auto;
-            transition: all 0.3s;
+            transition: all 0.4s var(--transition);
             min-height: 38px;
+            border: 1px solid transparent;
         }
         .card:hover .price {
-            transform: scale(1.04);
+            transform: scale(1.05);
+            border-color: rgba(201, 161, 92, 0.4);
         }
         .category-label {
             display: inline-block;
             background: var(--accent);
-            color: #2c1f17;
+            color: #fff;
             font-size: clamp(0.6rem, 0.7vw, 0.7rem);
             font-weight: 700;
             padding: 4px clamp(12px, 1.5vw, 16px);
@@ -442,6 +569,14 @@
             margin-top: 8px;
             letter-spacing: 0.4px;
             font-weight: 300;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .hint-svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
         }
 
         /* ===== МОДАЛЬНОЕ ОКНО ===== */
@@ -470,11 +605,21 @@
             max-width: 480px;
             width: 100%;
             padding: clamp(28px, 4vw, 40px) clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 50px 90px -20px rgba(36, 21, 16, 0.35);
             position: relative;
-            animation: modalIn 0.4s ease forwards;
+            animation: modalIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             border: 1px solid var(--modal-border);
             margin: 0 12px;
+            overflow: hidden;
+        }
+        .modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
         }
         .modal-close {
             position: absolute;
@@ -503,8 +648,10 @@
             margin-bottom: 4px;
         }
         .modal h3 {
-            font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.7vw, 1.8rem);
             font-weight: 600;
+            font-style: italic;
             text-align: center;
             color: var(--text);
             margin-bottom: 2px;
@@ -531,6 +678,15 @@
         .modal .modal-row .label {
             color: var(--text-light);
             flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .row-svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent);
+            flex-shrink: 0;
         }
         .modal .modal-row .value {
             font-weight: 600;
@@ -553,12 +709,15 @@
             min-height: 44px;
         }
         .modal .modal-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
             margin-top: 18px;
             padding: clamp(16px, 1.5vw, 18px);
-            background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2c1f17;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
             border: none;
             border-radius: 60px;
             font-size: clamp(1rem, 1.2vw, 1.05rem);
@@ -571,6 +730,9 @@
             min-height: var(--btn-min-height);
             touch-action: manipulation;
         }
+        .modal .modal-btn .row-svg {
+            color: #2c1610;
+        }
         .modal .modal-btn:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 28px var(--accent-glow);
@@ -581,8 +743,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(145deg, var(--accent), var(--accent-dark));
-            color: #2c1f17;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
             padding: clamp(16px, 2vw, 18px) clamp(32px, 5vw, 48px);
             border-radius: 60px;
             font-weight: 700;
@@ -602,20 +764,23 @@
         .btn::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(115deg, transparent, rgba(255,255,255,0.45), transparent);
+            transform: translateX(-160%) skewX(-15deg);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .btn:hover::after {
-            opacity: 1;
+            transform: translateX(340%) skewX(-15deg);
         }
         .btn:hover {
-            transform: scale(1.04);
-            box-shadow: 0 12px 40px rgba(196, 154, 125, 0.45);
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 16px 40px rgba(173, 133, 68, 0.4);
+        }
+        .btn:active {
+            transform: scale(0.99) translateY(0);
         }
         .btn-pulse {
             animation: pulseGlow 2.4s ease-in-out infinite;
@@ -634,11 +799,12 @@
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: all 0.4s var(--transition);
+            transition: transform 0.55s var(--transition), box-shadow 0.55s var(--transition), border-color 0.4s;
+            position: relative;
         }
         .gallery-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px) scale(1.015);
+            box-shadow: 0 26px 50px -10px rgba(58, 36, 24, 0.24), 0 6px 20px rgba(168, 53, 77, 0.1);
             border-color: var(--accent);
         }
         .gallery-item img,
@@ -667,27 +833,43 @@
         .step {
             flex: 1 1 clamp(160px, 20vw, 210px);
             background: var(--bg-soft);
-            padding: clamp(22px, 2.5vw, 28px) clamp(18px, 2vw, 22px);
+            padding: clamp(26px, 2.8vw, 32px) clamp(18px, 2vw, 22px) clamp(22px, 2.5vw, 26px);
             border-radius: clamp(32px, 3.5vw, 40px);
             text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s var(--transition);
-            min-height: 140px;
+            border: 1px solid var(--border);
+            transition: transform 0.5s var(--transition), box-shadow 0.5s var(--transition), border-color 0.4s;
+            min-height: 150px;
+            position: relative;
         }
         .step:hover {
             border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 32px var(--accent-glow);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(58, 36, 24, 0.16), 0 6px 18px rgba(168, 53, 77, 0.08);
         }
         .step .num {
-            font-size: clamp(2.4rem, 4vw, 2.8rem);
-            font-weight: 300;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 2px;
+            width: clamp(52px, 6vw, 58px);
+            height: clamp(52px, 6vw, 58px);
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.2vw, 1.5rem);
+            font-weight: 700;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto clamp(12px, 1.5vw, 16px);
+            box-shadow: 0 8px 20px rgba(173, 133, 68, 0.3);
+            transition: transform 0.5s var(--transition);
+        }
+        .step:hover .num {
+            transform: scale(1.08) rotate(-4deg);
         }
         .step h3 {
-            font-size: clamp(1.05rem, 1.3vw, 1.1rem);
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 1.4vw, 1.2rem);
+            font-weight: 600;
             color: var(--text);
             font-weight: 600;
         }
@@ -722,10 +904,17 @@
             color: var(--text);
         }
         .contact-block .icon {
-            font-size: clamp(1.4rem, 1.8vw, 1.6rem);
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: clamp(34px, 3vw, 38px);
+            height: clamp(34px, 3vw, 38px);
             flex-shrink: 0;
+            color: var(--accent);
+        }
+        .contact-block .icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         .socials {
@@ -788,11 +977,18 @@
             transform: translateY(-4px);
             border-color: var(--accent);
             box-shadow: var(--shadow-hover);
-            background: var(--accent);
-            color: #2c1f17;
+            background: var(--gold);
+            color: #2c1610;
         }
         .share-contact-btn .icon {
-            font-size: 1.4rem;
+            display: inline-flex;
+            width: 20px;
+            height: 20px;
+            color: currentColor;
+        }
+        .share-contact-btn .icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         /* ===== ФУТЕР ===== */
@@ -809,7 +1005,166 @@
         footer .footer-heart {
             display: inline-block;
             animation: floatSoft 2.2s ease-in-out infinite;
-            color: #e6a88a;
+            color: var(--gold);
+        }
+
+        /* ===== LIGHTBOX ГАЛЕРЕИ ===== */
+        .gallery-item[data-full] {
+            cursor: zoom-in;
+        }
+        .gallery-video {
+            position: relative;
+        }
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(44, 31, 23, 0.65);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.85);
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--transition);
+            touch-action: manipulation;
+        }
+        .video-play-btn:hover {
+            background: var(--accent-dark);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+        .video-play-btn.hidden {
+            display: none;
+        }
+
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 12, 8, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: scaleIn 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2.2rem;
+            cursor: pointer;
+            min-width: 48px;
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: border-color 0.4s, box-shadow 0.4s;
+        }
+        .faq-item:has(.faq-question[aria-expanded="true"]) {
+            border-color: var(--accent);
+            box-shadow: 0 16px 32px -10px rgba(58, 36, 24, 0.12);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: none;
+            border: none;
+            padding: clamp(18px, 2vw, 22px) clamp(20px, 2.5vw, 26px);
+            font-family: inherit;
+            font-size: clamp(0.98rem, 1.2vw, 1.05rem);
+            font-weight: 600;
+            color: var(--text);
+            text-align: left;
+            cursor: pointer;
+            min-height: var(--btn-min-height);
+            touch-action: manipulation;
+        }
+        .faq-toggle {
+            flex-shrink: 0;
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            transition: transform 0.3s var(--transition);
+        }
+        .faq-question[aria-expanded="true"] .faq-toggle {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s var(--transition);
+        }
+        .faq-answer p {
+            padding: 0 clamp(20px, 2.5vw, 26px) clamp(18px, 2vw, 22px);
+            color: var(--text-light);
+            font-size: clamp(0.9rem, 1.1vw, 0.95rem);
+            line-height: 1.6;
+        }
+
+        /* ===== ПЛАВАЮЩАЯ КНОПКА ЗАКАЗА ===== */
+        .floating-order-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 900;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            color: #2c1610;
+            padding: 14px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.98rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transition: all 0.3s var(--transition);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            touch-action: manipulation;
+        }
+        .floating-order-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .floating-order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 36px rgba(196, 154, 125, 0.5);
         }
 
         /* ============================================================ */
@@ -852,9 +1207,10 @@
                 white-space: normal;
                 text-align: center;
             }
-            .menu-tab .tab-icon {
-                margin-right: 8px;
-                font-size: 1.2rem;
+            .menu-tab .tab-svg,
+            .section-tab .tab-svg {
+                width: 20px;
+                height: 20px;
             }
 
             /* ===== ОСТАЛЬНЫЕ УВЕЛИЧЕНИЯ ===== */
@@ -921,7 +1277,10 @@
                 min-height: 130px;
             }
             .step .num {
-                font-size: 2.2rem;
+                width: 46px;
+                height: 46px;
+                font-size: 1.15rem;
+                margin-bottom: 10px;
             }
             .step h3 {
                 font-size: 1rem;
@@ -944,7 +1303,7 @@
             }
             .contact-block .icon {
                 width: 34px;
-                font-size: 1.3rem;
+                height: 34px;
             }
 
             .socials a {
@@ -982,18 +1341,31 @@
                 min-height: var(--tap-size);
             }
             header .header-telegram svg {
-                width: 52px;
-                height: 52px;
+                width: 42px;
+                height: 42px;
             }
             header h1 {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
-            header .deco-icon {
-                font-size: 1.9rem;
+            header .brand-seal {
+                width: 54px;
+                height: 54px;
+                font-size: 1.6rem;
             }
             header .header-sub {
-                font-size: 1rem;
-                padding: 8px 18px;
+                font-size: 0.95rem;
+                padding: 0;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 16px 18px;
+            }
+            .floating-order-btn {
+                bottom: 16px;
+                right: 16px;
+                padding: 14px 20px;
+                font-size: 0.9rem;
             }
         }
 
@@ -1036,7 +1408,10 @@
                 min-height: 110px;
             }
             .step .num {
-                font-size: 1.8rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-bottom: 8px;
             }
             .step h3 {
                 font-size: 0.9rem;
@@ -1118,32 +1493,47 @@
 <header>
     <div class="container">
         <div class="header-inner">
-            <span class="deco-icon">🧁</span>
-            <h1><span>🍰 Нафаня</span></h1>
-            <a href="https://t.me/DelicioustreatsfromNatasha" target="_blank" rel="noopener noreferrer" class="header-telegram" aria-label="Telegram">
-                <svg viewBox="0 0 24 24">
-                    <defs>
-                        <linearGradient id="tgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#2ba1e0"/>
-                            <stop offset="100%" stop-color="#26a5e4"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="12" cy="12" r="11.5" fill="url(#tgGrad)"/>
-                    <path d="M5.5 11.7c3.3-1.4 5.4-2.3 7.7-3.3 2.1-.9 3.5-1.4 4.3-1.6.2-.1.5-.2.7-.1.2.1.2.3.2.5-.1.1-.2.4-.2.8-.4 2.5-1.5 8.1-2.1 10.7-.2.7-.5 1-.8 1-.6.1-1.1-.4-1.7-.8-.9-.6-1.4-1-2.3-1.6-.9-.6-.5-1.1-.1-1.6.5-.5 2.8-2.7 2.9-3.3.1-.1.1-.2-.1-.4-.1-.1-.3-.1-.4 0-.1 0-1.2.9-3.6 2.5-.6.4-1.2.6-1.7.6-.6 0-1.7-.3-2.5-.5-.9-.3-1.7-.5-1.6-1 0-.3.4-.6 1.6-1.8z" fill="white"/>
-                </svg>
-            </a>
+            <span class="brand-seal">🍰</span>
+            <div class="brand-row">
+                <h1>Нафаня</h1>
+                <a href="https://t.me/DelicioustreatsfromNatasha" target="_blank" rel="noopener noreferrer" class="header-telegram" aria-label="Telegram">
+                    <svg viewBox="0 0 240 240">
+                        <defs>
+                            <linearGradient id="tgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#2AABEE"/>
+                                <stop offset="100%" stop-color="#229ED9"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="120" cy="120" r="120" fill="url(#tgGrad)"/>
+                        <path d="M170.6 71.9L146 190.6c-1.9 8.4-6.8 10.5-13.8 6.6l-38.1-28.1-18.4 17.7c-2 2-3.7 3.7-7.6 3.7l2.7-38.7 70.5-63.7c3.1-2.7-.7-4.3-4.7-1.5l-87.1 54.9-37.5-11.7c-8.2-2.6-8.3-8.2 1.7-12.1L159.9 60.3c6.8-2.5 12.8 1.6 10.7 11.6z" fill="#ffffff"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="header-divider"></div>
+            <p class="header-sub">Ручная кондитерская · торты, рулеты и десерты на заказ</p>
         </div>
-        <p class="header-sub">✨ Ручная кондитерская — торты, рулеты, десерты на заказ ✨</p>
     </div>
 </header>
 
 <!-- ===== НАВИГАЦИЯ ПО РАЗДЕЛАМ ===== -->
 <div class="container">
     <div class="section-tabs" role="tablist">
-        <button class="section-tab active" data-section="menu" role="tab">🍩 Меню</button>
-        <button class="section-tab" data-section="gallery" role="tab">📸 Галерея</button>
-        <button class="section-tab" data-section="order" role="tab">📦 Заказ</button>
-        <button class="section-tab" data-section="contacts" role="tab">📬 Контакты</button>
+        <button class="section-tab active" data-section="menu" role="tab">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5 12l1 7a2 2 0 0 0 2 1.7h8a2 2 0 0 0 2-1.7l1-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V5M12 8V4M15 8V5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            Меню
+        </button>
+        <button class="section-tab" data-section="gallery" role="tab">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="10.5" r="1.7" stroke="currentColor" stroke-width="1.6"/><path d="M4 17l4.5-4.5a2 2 0 0 1 2.7-.1L14 15l1.6-1.6a2 2 0 0 1 2.7 0L21 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Галерея
+        </button>
+        <button class="section-tab" data-section="order" role="tab">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 7.2L12 11l8-3.8M12 11v10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Заказ
+        </button>
+        <button class="section-tab" data-section="contacts" role="tab">
+            <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2.2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l7.3 5.3a1.2 1.2 0 0 0 1.4 0L20 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Контакты
+        </button>
     </div>
 </div>
 
@@ -1151,56 +1541,65 @@
 <!-- ===== РАЗДЕЛ: МЕНЮ ===== -->
 <div class="section-content active" id="section-menu">
     <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
-        <h2 class="section-title">🍩 Наше меню</h2>
+        <h2 class="section-title"><svg class="title-svg" viewBox="0 0 24 24" fill="none"><path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M5 12l1 7a2 2 0 0 0 2 1.7h8a2 2 0 0 0 2-1.7l1-7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8V5M12 8V4M15 8V5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Наше меню</h2>
 
         <div class="menu-tabs" role="tablist">
-            <button class="menu-tab active" data-menu="cakes" role="tab"><span class="tab-icon">🎂</span> Торты</button>
-            <button class="menu-tab" data-menu="rolls" role="tab"><span class="tab-icon">🍥</span> Рулеты</button>
-            <button class="menu-tab" data-menu="desserts" role="tab"><span class="tab-icon">🧁</span> Десерты</button>
+            <button class="menu-tab active" data-menu="cakes" role="tab">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><path d="M4 20v-5.5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2V20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 20h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 12.5V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3.5" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 7V4.6M12 7V3.6M14.5 7V4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4 16.7c1 .6 2 .6 3 0s2-.6 3 0 2 .6 3 0 2-.6 3 0 2 .6 3 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Торты
+            </button>
+            <button class="menu-tab" data-menu="rolls" role="tab">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 12a4.3 4.3 0 1 0-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>
+                Рулеты
+            </button>
+            <button class="menu-tab" data-menu="desserts" role="tab">
+                <svg class="tab-svg" viewBox="0 0 24 24" fill="none"><path d="M6 11l1.3 8.2a2 2 0 0 0 2 1.8h5.4a2 2 0 0 0 2-1.8L18 11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 11h14l-1.2-3.2a2 2 0 0 0-1.9-1.3H8.1a2 2 0 0 0-1.9 1.3L5 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 6.5V4M12 4c-.9 0-1.4-.7-1-1.4M12 4c.9 0 1.4-.7 1-1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                Десерты
+            </button>
         </div>
 
         <!-- Торты -->
         <div class="menu-content active" id="menu-cakes">
             <div class="grid">
                 <div class="card animate-on-scroll" data-name="Сникерс" data-emoji="🍫" data-category="Торт" data-price="от 2500 ₽" data-composition="Шоколадный бисквит, карамельный крем, арахис, шоколадный ганаш" data-calories="~420 ккал/100г">
-                    <span class="emoji-big">🍫</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍫</span></div>
                     <h3>Сникерс</h3>
                     <p>Шоколадный бисквит с карамелью и арахисом</p>
                     <div class="price">от 2500 ₽</div>
                     <span class="category-label">Торт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Малиновый" data-emoji="🍇" data-category="Торт" data-price="от 2700 ₽" data-composition="Ванильный бисквит, малиновый крем-чиз, свежая малина, белый шоколад" data-calories="~380 ккал/100г">
-                    <span class="emoji-big">🍇</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍇</span></div>
                     <h3>Малиновый</h3>
                     <p>Нежный бисквит с малиновым кремом</p>
                     <div class="price">от 2700 ₽</div>
                     <span class="category-label">Торт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Клубничный" data-emoji="🍓" data-category="Торт" data-price="3000 ₽" data-composition="Ванильный бисквит, клубничный крем-чиз, свежая клубника, сливочный мусс" data-calories="~360 ккал/100г">
-                    <span class="emoji-big">🍓</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍓</span></div>
                     <h3>Клубничный</h3>
                     <p>Свежий клубничный вкус с лёгким кремом</p>
                     <div class="price">3000 ₽</div>
                     <span class="category-label">Торт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Мятный" data-emoji="🌿" data-category="Торт" data-price="от 2600 ₽" data-composition="Шоколадный бисквит, мятный крем, шоколадный ганаш, свежая мята" data-calories="~400 ккал/100г">
-                    <span class="emoji-big">🌿</span>
+                    <div class="emoji-stage"><span class="emoji-big">🌿</span></div>
                     <h3>Мятный</h3>
                     <p>Освежающий мятный бисквит с шоколадом</p>
                     <div class="price">от 2600 ₽</div>
                     <span class="category-label">Торт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Молочная девочка" data-emoji="🥛" data-category="Торт" data-price="от 3000 ₽" data-composition="Нежные бисквитные коржи, заварной крем, молочная прослойка" data-calories="~350 ккал/100г">
-                    <span class="emoji-big">🥛</span>
+                    <div class="emoji-stage"><span class="emoji-big">🥛</span></div>
                     <h3>Молочная девочка</h3>
                     <p>Нежные коржи с заварным кремом</p>
                     <div class="price">от 3000 ₽</div>
                     <span class="category-label">Торт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
             </div>
         </div>
@@ -1209,36 +1608,36 @@
         <div class="menu-content" id="menu-rolls">
             <div class="grid">
                 <div class="card animate-on-scroll" data-name="Меренговый с малиной и фисташкой" data-emoji="🍇🟢" data-category="Рулет" data-price="3500 ₽" data-composition="Хрустящая меренга, малиново-фисташковый крем, свежая малина, фисташка" data-calories="~390 ккал/100г">
-                    <span class="emoji-big">🍇🟢</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍇🟢</span></div>
                     <h3>Меренговый с малиной и фисташкой</h3>
                     <p>Хрустящая меренга с малиново-фисташковым кремом</p>
                     <div class="price">3500 ₽</div>
                     <span class="category-label">Рулет</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Меренговый с клубникой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Нежная меренга, клубничный крем-чиз, свежая клубника" data-calories="~370 ккал/100г">
-                    <span class="emoji-big">🍓</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍓</span></div>
                     <h3>Меренговый с клубникой</h3>
                     <p>Нежная меренга с клубничным кремом</p>
                     <div class="price">3000 ₽</div>
                     <span class="category-label">Рулет</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Меренговый с клубникой и голубикой" data-emoji="🍓" data-category="Рулет" data-price="3000 ₽" data-composition="Хрустящая меренга, ягодный крем-чиз, клубника, голубика" data-calories="~380 ккал/100г">
-                    <span class="emoji-big">🍓</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍓</span></div>
                     <h3>Меренговый с клубникой и голубикой</h3>
                     <p>Хрустящая меренга с ягодным кремом</p>
                     <div class="price">3000 ₽</div>
                     <span class="category-label">Рулет</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Меренговый с мандарином" data-emoji="🍊" data-category="Рулет" data-price="2500 ₽" data-composition="Цитрусовая меренга, мандариновый крем, цедра мандарина" data-calories="~360 ккал/100г">
-                    <span class="emoji-big">🍊</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍊</span></div>
                     <h3>Меренговый с мандарином</h3>
                     <p>Цитрусовая меренга с мандариновым кремом</p>
                     <div class="price">2500 ₽</div>
                     <span class="category-label">Рулет</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
             </div>
         </div>
@@ -1247,28 +1646,28 @@
         <div class="menu-content" id="menu-desserts">
             <div class="grid">
                 <div class="card animate-on-scroll" data-name="Пирожное «Картошка»" data-emoji="🥔" data-category="Десерт" data-price="от 800 ₽ / от 4 шт" data-composition="Бисквитная крошка, масляный крем с какао, грецкий орех, шоколадная глазурь" data-calories="~450 ккал/100г">
-                    <span class="emoji-big">🥔</span>
+                    <div class="emoji-stage"><span class="emoji-big">🥔</span></div>
                     <h3>Пирожное «Картошка»</h3>
                     <p>Из бисквитной крошки с масляным кремом</p>
                     <div class="price">от 800 ₽ / от 4 шт</div>
                     <span class="category-label">Десерт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Вафельные трубочки" data-emoji="🥞" data-category="Десерт" data-price="от 450 ₽ / от 3 шт" data-composition="Хрустящие вафли, варёная сгущёнка, шоколадная крошка, карамель" data-calories="~420 ккал/100г">
-                    <span class="emoji-big">🥞</span>
+                    <div class="emoji-stage"><span class="emoji-big">🥞</span></div>
                     <h3>Вафельные трубочки</h3>
                     <p>Хрустящие вафли с варёной сгущёнкой</p>
                     <div class="price">от 450 ₽ / от 3 шт</div>
                     <span class="category-label">Десерт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
                 <div class="card animate-on-scroll" data-name="Трайфлы" data-emoji="🍰" data-category="Десерт" data-price="от 500 ₽" data-composition="Бисквит, ванильный крем, свежие ягоды, карамельный соус" data-calories="~340 ккал/100г">
-                    <span class="emoji-big">🍰</span>
+                    <div class="emoji-stage"><span class="emoji-big">🍰</span></div>
                     <h3>Трайфлы</h3>
                     <p>Слоёный десерт с кремом и ягодами</p>
                     <div class="price">от 500 ₽</div>
                     <span class="category-label">Десерт</span>
-                    <span class="card-hint">👆 Нажмите для деталей</span>
+                    <span class="card-hint"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите для деталей</span>
                 </div>
             </div>
         </div>
@@ -1279,22 +1678,26 @@
 <!-- ===== РАЗДЕЛ: ГАЛЕРЕЯ ===== -->
 <div class="section-content" id="section-gallery">
     <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
-        <h2 class="section-title">📸 Примеры работ</h2>
+        <h2 class="section-title"><svg class="title-svg" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="10.5" r="1.7" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l4.5-4.5a2 2 0 0 1 2.7-.1L14 15l1.6-1.6a2 2 0 0 1 2.7 0L21 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Примеры работ</h2>
         <div class="gallery">
-            <div class="gallery-item"><img src="IMG_20260708_110810_041.jpg" alt="Торт" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_110806_420.jpg" alt="Торт" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_110802_291.jpg" alt="Торт" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_110758_772.jpg" alt="Рулет" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_110755_730.jpg" alt="Торт" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_110752_407.jpg" alt="Торт" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><video src="IMG_6982.MOV" autoplay muted loop playsinline loading="lazy"></video></div>
-            <div class="gallery-item"><img src="IMG_20260708_202659_244.jpg" alt="Рулет" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_202645_331.jpg" alt="Рулет" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_202630_895.jpg" alt="Рулет" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_202621_721.jpg" alt="Пирожное" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_202614_790.jpg" alt="Трубочки" loading="lazy" decoding="async"></div>
-            <div class="gallery-item"><img src="IMG_20260708_202607_820.jpg" alt="Торт" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110810_041.jpg"><img src="IMG_20260708_110810_041.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110806_420.jpg"><img src="IMG_20260708_110806_420.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110802_291.jpg"><img src="IMG_20260708_110802_291.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110758_772.jpg"><img src="IMG_20260708_110758_772.jpg" alt="Рулет ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110755_730.jpg"><img src="IMG_20260708_110755_730.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_110752_407.jpg"><img src="IMG_20260708_110752_407.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item gallery-video">
+                <video src="IMG_6982.MOV" muted loop playsinline preload="none"></video>
+                <button class="video-play-btn" aria-label="Воспроизвести видео">▶</button>
+            </div>
+            <div class="gallery-item" data-full="IMG_20260708_202659_244.jpg"><img src="IMG_20260708_202659_244.jpg" alt="Рулет ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_202645_331.jpg"><img src="IMG_20260708_202645_331.jpg" alt="Рулет ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_202630_895.jpg"><img src="IMG_20260708_202630_895.jpg" alt="Рулет ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_202621_721.jpg"><img src="IMG_20260708_202621_721.jpg" alt="Пирожное «Картошка» от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_202614_790.jpg"><img src="IMG_20260708_202614_790.jpg" alt="Вафельные трубочки от кондитерской Нафаня" loading="lazy" decoding="async"></div>
+            <div class="gallery-item" data-full="IMG_20260708_202607_820.jpg"><img src="IMG_20260708_202607_820.jpg" alt="Торт ручной работы от кондитерской Нафаня" loading="lazy" decoding="async"></div>
         </div>
+        <p style="text-align:center; margin-top:20px; color:var(--text-light); font-size:0.9rem; display:flex; align-items:center; justify-content:center; gap:6px;"><svg class="hint-svg" viewBox="0 0 24 24" fill="none"><path d="M9 12.5V5.5a1.5 1.5 0 0 1 3 0v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.5v-2a1.5 1.5 0 0 1 3 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 11.7V10a1.5 1.5 0 0 1 3 0v6c0 3-2 5.5-5.5 5.5S7 18.5 6.3 16.4L4.6 12a1.4 1.4 0 0 1 2.4-1.4l1 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Нажмите на фото, чтобы увеличить</p>
     </section>
 </div>
 
@@ -1302,14 +1705,50 @@
 <!-- ===== РАЗДЕЛ: ЗАКАЗ ===== -->
 <div class="section-content" id="section-order">
     <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
-        <h2 class="section-title">📦 Как заказать</h2>
+        <h2 class="section-title"><svg class="title-svg" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4.2v9.6L12 21l-8-4.2V7.2L12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7.2L12 11l8-3.8M12 11v10" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Как заказать</h2>
         <div class="steps">
             <div class="step"><span class="num">1</span><h3>Выберите десерт</h3><p>Из меню или свой рецепт</p></div>
             <div class="step"><span class="num">2</span><h3>Согласуйте детали</h3><p>Вес, декор, дата доставки</p></div>
             <div class="step"><span class="num">3</span><h3>Получите вкус</h3><p>Самовывоз или доставка</p></div>
         </div>
         <div style="text-align:center; margin-top:clamp(32px, 5vw, 40px);">
-            <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="btn btn-pulse">✨ Сделать заказ ✨</a>
+            <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="btn btn-pulse">
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                Сделать заказ
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <h2 class="section-title" style="margin-top:clamp(48px, 6vw, 64px);"><svg class="title-svg" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .8-1 1.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17" r="0.9" fill="currentColor"/></svg>Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    За сколько дней нужно делать заказ?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"><p>Оптимально — за 2–3 дня. Для больших или сложных тортов с индивидуальным декором лучше согласовать за 5–7 дней, особенно перед праздниками.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Можно ли изменить рецепт под аллергию или диету?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"><p>Да, обсудим замену ингредиентов индивидуально — напишите в Telegram, что нужно исключить или заменить.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Есть ли доставка?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"><p>Да, доставка по Москве обсуждается индивидуально при оформлении заказа. Также доступен самовывоз.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    Как происходит оплата?
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"><p>Обычно вносится предоплата для подтверждения заказа, остаток — при получении. Детали уточняются в переписке.</p></div>
+            </div>
         </div>
     </section>
 </div>
@@ -1318,31 +1757,45 @@
 <!-- ===== РАЗДЕЛ: КОНТАКТЫ ===== -->
 <div class="section-content" id="section-contacts">
     <section class="container" style="padding: 0 0 clamp(36px, 6vw, 52px);">
-        <h2 class="section-title">📬 Свяжитесь со мной</h2>
+        <h2 class="section-title"><svg class="title-svg" viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M4 7l7.3 5.3a1.2 1.2 0 0 0 1.4 0L20 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Свяжитесь со мной</h2>
         <div class="contact-block">
-            <p><span class="icon">📱</span> +7 (916) 012-47-90</p>
-            <p><span class="icon">✉️</span> @nafanya1808 (Telegram)</p>
-            <p><span class="icon">📍</span> г. Москва, строительный пр. 20к1</p>
-            <p><span class="icon">⏰</span> Пн–Сб 10:00 – 20:00</p>
+            <p><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.36 2.3.56 3.5.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.2.2 2.4.56 3.5a1 1 0 0 1-.25 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span> +7 (916) 012-47-90</p>
+            <p><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M2.5 12L21 4l-4 17-5.2-4.2L9 19l-.6-5.4L2.5 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M21 4L8.5 13.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> @nafanya1808 (Telegram)</p>
+            <p><span class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></span> г. Москва, строительный пр. 20к1</p>
+            <p><span class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Пн–Сб 10:00 – 20:00</p>
             <div class="socials">
                 <a href="https://t.me/DelicioustreatsfromNatasha" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                    <svg viewBox="0 0 24 24">
-                        <defs><linearGradient id="tgGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2ba1e0"/><stop offset="100%" stop-color="#26a5e4"/></linearGradient></defs>
-                        <circle cx="12" cy="12" r="11.5" fill="url(#tgGrad2)"/>
-                        <path d="M5.5 11.7c3.3-1.4 5.4-2.3 7.7-3.3 2.1-.9 3.5-1.4 4.3-1.6.2-.1.5-.2.7-.1.2.1.2.3.2.5-.1.1-.2.4-.2.8-.4 2.5-1.5 8.1-2.1 10.7-.2.7-.5 1-.8 1-.6.1-1.1-.4-1.7-.8-.9-.6-1.4-1-2.3-1.6-.9-.6-.5-1.1-.1-1.6.5-.5 2.8-2.7 2.9-3.3.1-.1.1-.2-.1-.4-.1-.1-.3-.1-.4 0-.1 0-1.2.9-3.6 2.5-.6.4-1.2.6-1.7.6-.6 0-1.7-.3-2.5-.5-.9-.3-1.7-.5-1.6-1 0-.3.4-.6 1.6-1.8z" fill="white"/>
+                    <svg viewBox="0 0 240 240">
+                        <defs><linearGradient id="tgGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2AABEE"/><stop offset="100%" stop-color="#229ED9"/></linearGradient></defs>
+                        <circle cx="120" cy="120" r="120" fill="url(#tgGrad2)"/>
+                        <path d="M170.6 71.9L146 190.6c-1.9 8.4-6.8 10.5-13.8 6.6l-38.1-28.1-18.4 17.7c-2 2-3.7 3.7-7.6 3.7l2.7-38.7 70.5-63.7c3.1-2.7-.7-4.3-4.7-1.5l-87.1 54.9-37.5-11.7c-8.2-2.6-8.3-8.2 1.7-12.1L159.9 60.3c6.8-2.5 12.8 1.6 10.7 11.6z" fill="#ffffff"/>
                     </svg>
                 </a>
                 <a href="https://max.ru/u/f9LHodD0cOLTeD1CmkAc4azYgBUsQUzG6E0v7aiQZLGCFG8e8LfZELEkdOY" target="_blank" rel="noopener noreferrer" aria-label="Макс">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11.5" fill="#FF6B00"/><text x="12" y="17" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">М</text></svg>
+                    <svg viewBox="0 0 24 24">
+                        <defs>
+                            <linearGradient id="maxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4A7DFF"/>
+                                <stop offset="100%" stop-color="#8B5CF6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="0.5" y="0.5" width="23" height="23" rx="6.5" fill="url(#maxGrad)"/>
+                        <path d="M7 8.3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v5.2a2 2 0 0 1-2 2h-4.4l-2.9 2.4c-.4.3-.9 0-.9-.5v-2H9a2 2 0 0 1-2-2V8.3z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
                 </a>
             </div>
 
             <button class="share-contact-btn" id="shareContactBtn">
-                <span class="icon">📤</span> Поделиться
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="19" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.1 10.8L15.9 6.2M8.1 13.2l7.8 4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span> Поделиться
             </button>
         </div>
     </section>
 </div>
+
+<!-- ===== ПЛАВАЮЩАЯ КНОПКА ЗАКАЗА ===== -->
+<a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="floating-order-btn" id="floatingOrderBtn" aria-label="Сделать заказ в Telegram">
+    <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Заказать
+</a>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -1350,6 +1803,12 @@
         <p>© 2026 Кондитерская Нафаня <span class="footer-heart">❤️</span> — сделано с любовью и сахаром</p>
     </div>
 </footer>
+
+<!-- ===== LIGHTBOX ГАЛЕРЕИ ===== -->
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">✕</button>
+    <img id="lightboxImg" src="" alt="Увеличенное фото">
+</div>
 
 <!-- ===== МОДАЛЬНОЕ ОКНО ===== -->
 <div class="modal-overlay" id="modal">
@@ -1359,19 +1818,46 @@
         <h3 id="modalName">Название</h3>
         <span class="modal-category" id="modalCategory">Категория</span>
         <div class="modal-divider"></div>
-        <div class="modal-row"><span class="label">🧾 Состав</span><span class="value" id="modalComposition">—</span></div>
-        <div class="modal-row"><span class="label">🔥 Калорийность</span><span class="value" id="modalCalories">—</span></div>
+        <div class="modal-row"><span class="label"><svg class="row-svg" viewBox="0 0 24 24" fill="none"><path d="M6 4h9l4 4v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M15 4v4h4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 12h8M8 15.5h8M8 8.5h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg> Состав</span><span class="value" id="modalComposition">—</span></div>
+        <div class="modal-row"><span class="label"><svg class="row-svg" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 2.4-.6 3.4-1.5 4.6-1 1.3-1.3 2.7-.6 4a3 3 0 0 0 5.7-1.3c0-.8-.3-1.4-.7-2 1.4.9 2.1 2.4 2.1 4.1a5 5 0 0 1-10 0c0-3.6 2.7-5.6 5-9.4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Калорийность</span><span class="value" id="modalCalories">—</span></div>
         <div class="modal-divider"></div>
         <div style="text-align: center;">
             <span class="modal-price" id="modalPrice">—</span>
         </div>
-        <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="modal-btn">📩 Заказать</a>
+        <a href="https://t.me/nafanya1808" target="_blank" rel="noopener noreferrer" class="modal-btn">
+            <svg class="row-svg" viewBox="0 0 24 24" fill="none"><path d="M2.5 12L21 4l-4 17-5.2-4.2L9 19l-.6-5.4L2.5 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg> Заказать
+        </a>
     </div>
 </div>
 
 <!-- ===== СКРИПТ ===== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
+        // ===== 0. SCROLL-REVEAL АНИМАЦИЯ (IntersectionObserver) =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.dataset.revealDelay || 0;
+                    el.style.transitionDelay = delay + 'ms';
+                    el.classList.add('is-visible');
+                    revealObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        function primeRevealGroup(container) {
+            if (!container) return;
+            const items = container.querySelectorAll('.animate-on-scroll:not(.is-visible)');
+            items.forEach((el, i) => {
+                el.dataset.revealDelay = Math.min(i * 70, 420);
+                revealObserver.observe(el);
+            });
+        }
+
+        // Observe everything currently in the DOM
+        primeRevealGroup(document);
 
         // ===== 1. ВКЛАДКИ РАЗДЕЛОВ =====
         const sectionTabs = document.querySelectorAll('.section-tab');
@@ -1384,7 +1870,10 @@
                 const targetId = 'section-' + this.dataset.section;
                 sectionContents.forEach(c => c.classList.remove('active'));
                 const target = document.getElementById(targetId);
-                if (target) target.classList.add('active');
+                if (target) {
+                    target.classList.add('active');
+                    primeRevealGroup(target);
+                }
             });
         });
 
@@ -1399,7 +1888,10 @@
                 const targetId = 'menu-' + this.dataset.menu;
                 menuContents.forEach(c => c.classList.remove('active'));
                 const target = document.getElementById(targetId);
-                if (target) target.classList.add('active');
+                if (target) {
+                    target.classList.add('active');
+                    primeRevealGroup(target);
+                }
             });
         });
 
@@ -1483,13 +1975,114 @@
             const btn = document.getElementById('shareContactBtn');
             const originalText = btn.innerHTML;
             btn.innerHTML = `<span class="icon">✅</span> ${message}`;
-            btn.style.background = 'var(--accent)';
-            btn.style.color = '#2c1f17';
+            btn.style.background = 'var(--gold)';
+            btn.style.color = '#2c1610';
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.style.background = '';
                 btn.style.color = '';
             }, 3000);
+        }
+
+        // ===== 5. LIGHTBOX ГАЛЕРЕИ =====
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.gallery-item[data-full]').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                lightboxImg.src = this.dataset.full;
+                lightboxImg.alt = img ? img.alt : '';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // ===== 6. ВИДЕО В ГАЛЕРЕЕ ПО КЛИКУ =====
+        document.querySelectorAll('.gallery-video').forEach(wrap => {
+            const video = wrap.querySelector('video');
+            const btn = wrap.querySelector('.video-play-btn');
+            if (!video || !btn) return;
+            btn.addEventListener('click', function() {
+                video.play();
+                btn.classList.add('hidden');
+            });
+            video.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    btn.classList.add('hidden');
+                } else {
+                    video.pause();
+                    btn.classList.remove('hidden');
+                }
+            });
+            video.addEventListener('ended', () => btn.classList.remove('hidden'));
+        });
+
+        // ===== 7. FAQ АККОРДЕОН =====
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = this.getAttribute('aria-expanded') === 'true';
+
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.setAttribute('aria-expanded', 'false');
+                    q.nextElementSibling.style.maxHeight = null;
+                });
+
+                if (!isOpen) {
+                    this.setAttribute('aria-expanded', 'true');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // ===== 8. ПЛАВАЮЩАЯ КНОПКА ЗАКАЗА =====
+        const floatingBtn = document.getElementById('floatingOrderBtn');
+        if (floatingBtn) {
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY;
+                if (scrollY > 400) {
+                    floatingBtn.classList.add('visible');
+                } else {
+                    floatingBtn.classList.remove('visible');
+                }
+                lastScroll = scrollY;
+            }, { passive: true });
+        }
+
+        // ===== 9. ЛЁГКИЙ PARALLAX В ХЕДЕРЕ =====
+        const headerEl = document.querySelector('header');
+        const brandSeal = document.querySelector('.brand-seal');
+        if (headerEl && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        const y = window.scrollY;
+                        if (y < 400) {
+                            headerEl.style.backgroundPositionY = (y * 0.15) + 'px';
+                            if (brandSeal) brandSeal.style.transform = `translateY(${y * 0.12}px)`;
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
         }
 
     });
